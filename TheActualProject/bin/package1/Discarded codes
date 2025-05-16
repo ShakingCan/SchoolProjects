@@ -1,0 +1,157 @@
+	public void singleBook() {
+Path fp = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
+		
+		String CustomerName;
+		String MovieName;
+		
+		try (Scanner scan = new Scanner(fp)) {
+			while (scan.hasNextLine()) {
+				bookings.add(scan.nextLine());
+			}
+			
+			
+			
+			while(true) {
+				System.out.println("Enter Name:");
+				CustomerName=s.nextLine();
+				if (isValidName(CustomerName)) {
+					break;
+				}
+				System.out.println("Wrong format. Try again.");
+			}
+			while(true) {
+				System.out.println("Enter movie name:");
+				MovieName = s.nextLine();
+				if(isValidMovie(MovieName)) {
+					break;
+				}
+				System.out.println("Wrong format. Try again.");
+			}
+			while(true) {
+				System.out.println("Enter Ticket ID: ");
+				TicketID = s.nextLine();
+				if(isValidTicketID(TicketID)) {
+					break;
+				}
+				System.out.println("Wrong format. Try again.");
+			}
+			
+			String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
+			bookings.add(entry);
+			customers.add(CustomerName);
+			PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt", false));
+			System.out.println("this would cost: ₱"+standardPricing);
+			while(true) {
+				try {
+					System.out.println("enter payment");
+					int payment = s.nextInt();
+					if(payment ==standardPricing) {
+						break;
+					}else if(payment>standardPricing) {
+						int change = payment-standardPricing;
+						System.out.println("Change: "+ change);
+						break;
+					}else {
+						System.out.println("sorry, your payment is insufficient");
+						System.out.println("Please pay with higher amount");
+					}
+				}catch(InputMismatchException e) {
+					System.out.println("numbers only");
+				}
+			}
+			System.out.println("Ticket successfully booked");
+			System.out.println(bookings);
+			int nig = bookings.size() -1;
+			System.out.println("you are in slot "+nig);
+			Recurse();
+		}catch(IOException e) {
+			System.out.println("Error has occured");
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	public void premiumSingleBook() {
+		Path fp = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
+				
+				String CustomerName;
+				String MovieName;
+				
+				try (Scanner scan = new Scanner(fp)) {
+					while (scan.hasNextLine()) {
+						bookings.add(scan.nextLine());
+					}
+									
+					while(true) {
+						System.out.println("Enter Name:");
+						CustomerName=s.nextLine();
+						if (isValidName(CustomerName)) {
+							break;
+						}
+						System.out.println("Wrong format. Try again.");
+					}
+					while(true) {
+						System.out.println("Enter movie name:");
+						MovieName = s.nextLine();
+						if(isValidMovie(MovieName)) {
+							break;
+						}
+						System.out.println("Wrong format. Try again.");
+					}
+					while(true) {
+						System.out.println("Enter Ticket ID: ");
+						TicketID = s.nextLine();
+						if(isValidTicketID(TicketID)) {
+							break;
+						}
+						System.out.println("Wrong format. Try again.");
+					}
+					
+					String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
+					System.out.println("this would cost: ₱"+premiumPricing);
+					while(true) {
+						try {
+							System.out.println("enter payment");
+							int payment = s.nextInt();
+							if(payment ==premiumPricing) {
+								break;
+							}else if(payment>premiumPricing) {
+								int change = payment-premiumPricing;
+								int recordpay = premiumPricing;
+								premiumPayments.add(recordpay);
+								System.out.println("Change: "+ change);
+								break;
+							}else {
+								System.out.println("sorry, your payment is insufficient");
+								System.out.println("Please pay with higher amount");
+							}
+						}catch(InputMismatchException e) {
+							System.out.println("numbers only");
+						}
+					}
+					premiumBookings.add(entry);
+					customers.add(CustomerName);
+					
+					PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt", false));
+				
+					System.out.println("Ticket successfully booked");
+					System.out.println(premiumBookings);
+					int nig = premiumBookings.size() -1;
+					System.out.println("you are in slot "+nig);
+					Recurse();
+				}catch(IOException e) {
+					System.out.println("Error has occured");
+				}
+			}
+			
+			
+			
+			
+	
+	
+	
+	
