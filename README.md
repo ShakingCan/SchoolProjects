@@ -1,0 +1,2 @@
+# SchoolProjects
+mostly school stuff
