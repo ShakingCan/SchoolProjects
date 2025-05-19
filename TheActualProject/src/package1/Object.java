@@ -27,6 +27,8 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 		Movies.add("The Dark Knight");
 		Movies.add("Avengers: Endgame");
 	}
+	static int padding = 42; //padding
+	
 	static List<String> bookings = new ArrayList<>();
 	static {
 		bookings.add("");
@@ -306,23 +308,28 @@ final String RESET = "\u001B[0m";
 		
 		try (Scanner scan = new Scanner(fp)) {
 			while(true) {
+				System.out.print("                                                                                                        " );
 				System.out.println("Please enter how many tickets will be booked");
+				System.out.print("                                                                                                        " );
 				BookNum = s.nextInt();
 				s.nextLine();
 				if(BookNum>0) {
 					break;
 				}
 			}
-			
+			  System.out.print("                                                                                                        " );
 			System.out.println("just type cancel if you dont wanna continue");
 			while(true) {
+				System.out.print("                                                                                                        " );
 				System.out.println("Enter Name:");
+				System.out.print("                                                                                                        " );
 				CustomerName=s.nextLine();
 				if (isValidName(CustomerName)) {
 					break;
 				}else if(CustomerName.equalsIgnoreCase("cancel")) {
 					Recurse();
 				}
+				  System.out.print("                                                                                                        " );
 				System.out.println("Wrong format. Try again.");
 			}
 			while(true) {
@@ -340,65 +347,84 @@ final String RESET = "\u001B[0m";
 				
 				
 				
-				
+		        System.out.print("                                                                                                        " );
 				System.out.println("Enter movie name:");
+				System.out.print("                                                                                                        " );
 				MovieName = s.nextLine();
 				if(Movies.contains(MovieName)&&isValidMovie(MovieName)) {
 					break;
 				}else if(CustomerName.equalsIgnoreCase("cancel")) {
 					Recurse();
 				}
+				  System.out.print("                                                                                                        " );
 				System.out.println("Wrong format. Try again.");
 			}
 			while(true) {
+				  System.out.print("                                                                                                        " );
 				System.out.println("Enter Ticket ID: ");
+				  System.out.print("                                                                                                        " );
 				TicketID = s.nextLine();
 				if(isValidTicketID(TicketID)) {
 					break;
 				}else if(CustomerName.equalsIgnoreCase("cancel")) {
 					Recurse();
 				}
+				System.out.print("                                                                                                        " );
 				System.out.println("Wrong format. Try again.");
 			}
 			
 			for (int i = 0; i < BookNum; i++){
 
+				System.out.print("                                                                                                        " );
 				String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
 				bookings.add(entry);
 				customers.add(CustomerName);
 				int nig = bookings.size() -1; 
+				System.out.print("                                                                                                        " );
 				System.out.println("your slots are "+nig);
 			}
 			int recordpay=0;
 			int total = BookNum*standardPricing;
+			System.out.print("                                                                                                        " );
 			System.out.println("total cost: "+ total);
 			while(true) {
 				try {
+					System.out.print("                                                                                                        " );
 					System.out.println("enter payment");
+					System.out.print("                                                                                                        " );
 					int payment = s.nextInt();
 					if(payment ==total) {
+						System.out.print("                                                                                                        " );
 						System.out.println(bookings);
+						System.out.print("                                                                                                        " );
 						System.out.println("cost: "+payment );
 						standardPayments.add(payment);
 						break;
 					}else if(payment>total) {
 						recordpay = BookNum*standardPricing;
 						int change = payment-total;
+						System.out.print("                                                                                                        " );
 						System.out.println(bookings);
+						System.out.print("                                                                                                        " );
 						System.out.println("cost: "+recordpay );
+						System.out.print("                                                                                                        " );
 						System.out.println("Change: "+ change);
 						standardPayments.add(recordpay);
 						break;
 					}else {
+						System.out.print("                                                                                                        " );
 						System.out.println("sorry, your payment is insufficient");
+						System.out.print("                                                                                                        " );
 						System.out.println("Please pay with higher amount");
 					}
 				}catch(InputMismatchException e) {
+					System.out.print("                                                                                                        " );
 					System.out.println("numbers only");
+					System.out.print("                                                                                                        " );
 					s.nextLine();
 				}
 			}
-		
+			System.out.print("                                                                                                        " );
 			System.out.println(BookNum+" Tickets successfully booked");
 			
 			
@@ -418,8 +444,10 @@ final String RESET = "\u001B[0m";
 			writerP.flush();
 
 			}catch(IOException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println("Error has occured");
 			}catch(InputMismatchException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println("Numbers only");
 			}
 		recurseStandard();
@@ -437,10 +465,16 @@ final String RESET = "\u001B[0m";
 				int BookNum =0;
 				String CustomerName;
 				String MovieName;
+		        
+
+		        // Print padded prompt
+		       
 				
 				try (Scanner scan = new Scanner(fp)) {
 					while(true) {
+						System.out.print("                                                                                                        " );
 						System.out.println("Please enter how many tickets will be booked");
+						System.out.print("                                                                                                        " );
 						BookNum = s.nextInt();
 						s.nextLine();
 						if(BookNum>0) {
@@ -451,13 +485,16 @@ final String RESET = "\u001B[0m";
 				System.out.println("just type cancel to cancel");
 					
 					while(true) {
+						System.out.print("                                                                                                        " );
 						System.out.println("Enter Name:");
+						System.out.print("                                                                                                        " );
 						CustomerName=s.nextLine();
 						if (isValidName(CustomerName)) {
 							break;
 						}else if(CustomerName.equalsIgnoreCase("cancel")) {
 							Recurse();
 						}
+						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
 					while(true) {
@@ -476,44 +513,52 @@ final String RESET = "\u001B[0m";
 						
 						
 						
-						
+				System.out.print("                                                                                                        " );
 						System.out.println("Enter movie name:");
 						
 						
 						
-						
+						System.out.print("                                                                                                        " );
 						MovieName = s.nextLine();
 						if(Movies.contains(MovieName)&&isValidMovie(MovieName)) {
 							break;
 						}else if(CustomerName.equalsIgnoreCase("cancel")) {
 							Recurse();
 						}
+						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
 					while(true) {
+						System.out.print("                                                                                                        " );
 						System.out.println("Enter Ticket ID: ");
+						System.out.print("                                                                                                        " );
 						TicketID = s.nextLine();
 						if(isValidTicketID(TicketID)) {
 							break;
 						}else if(CustomerName.equalsIgnoreCase("cancel")) {
 							Recurse();
 						}
+						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
 					
 					for (int i = 0; i < BookNum; i++){
-
+						System.out.print("                                                                                                        " );
 						String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
 						premiumBookings.add(entry);
 						customers.add(CustomerName);
 						int nig = premiumBookings.size() -1; 
+						System.out.print("                                                                                                        " );
 						System.out.println("your slots are "+nig);
 					}
 					int total = BookNum*premiumPricing;
+					System.out.print("                                                                                                        " );
 					System.out.println("total cost: "+ total);
 					while(true) {
 						try {
+							System.out.print("                                                                                                        " );
 							System.out.println("enter payment");
+							System.out.print("                                                                                                        " );
 							int payment = s.nextInt();
 							if(payment ==total) {
 								premiumPayments.add(payment);
@@ -521,20 +566,25 @@ final String RESET = "\u001B[0m";
 							}else if(payment>total) {
 								int change = payment-total;
 								int recordpay = BookNum*premiumPricing;
+								System.out.print("                                                                                                        " );
 								System.out.println("Change: "+ change);
 								premiumPayments.add(recordpay);
 								break;
 							}else {
+								System.out.print("                                                                                                        " );
 								System.out.println("sorry, your payment is insufficient");
+								System.out.print("                                                                                                        " );
 								System.out.println("Please pay with higher amount");
 							}
 						}catch(InputMismatchException e) {
+							System.out.print("                                                                                                        " );
 							System.out.println("numbers only");
 							s.nextLine();
 						}
 					}
-					
+					System.out.print("                                                                                                        " );
 					System.out.println(BookNum+" Tickets successfully booked");
+					System.out.print("                                                                                                        " );
 					System.out.println(premiumBookings);
 					
 					PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
@@ -550,8 +600,10 @@ final String RESET = "\u001B[0m";
 						writerP.flush();
 
 					}catch(IOException e) {
+						System.out.print("                                                                                                        " );
 						System.out.println("Error has occured");
 					}catch(InputMismatchException e) {
+						System.out.print("                                                                                                        " );
 						System.out.println("Numbers only");
 					}
 				
@@ -566,16 +618,19 @@ final String RESET = "\u001B[0m";
 		int bs = bookings.size() -1; 
 		while(true) {
 			try {
-				
+				System.out.print("                                                                                                        " );	
 				System.out.println("enter number of bookings and seat reservations to cancel");
+				System.out.print("                                                                                                        " );
 				 numtodel= s.nextInt();
 				 s.nextLine();
 				 if(numtodel>bs) {
+						System.out.print("                                                                                                        " );
 					 System.out.println("hollup man thats above the number of bookings");
 				 }else if(numtodel<=bs) {
 					 break;
 				 }
 			}catch(InputMismatchException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println(" that aint a number");
 				s.nextLine();
 			}
@@ -589,22 +644,26 @@ final String RESET = "\u001B[0m";
 					for(int i=0;i<numtodel;i++) {
 						
 						Standardstatus();
+						System.out.print("                                                                                                        " );
 							 System.out.println("type the seat codes you have reserevd to cancel reservation");
-							 
+								System.out.print("                                                                                                        " );
 							String input = s.nextLine();
 							 if (Standardseats.containsKey(input)&&isStandardSeatValid(input)&&	!Standardseats.get(input).equals("available")) {
 								 Standardseats.put(input,"available");
 								 Standardstatus.put(input, GREEN+"██"+NON  );
+									System.out.print("                                                                                                        " );
 								System.out.println(input+ "is now "+ Standardseats.get(input));
 								Standardstatus();
 							}else {
 								 i--;
+									System.out.print("                                                                                                        " );
 								 System.out.println("follow the instructions!");
 						
 					}
 					}
-			
+					System.out.print("                                                                                                        " );
 				System.out.println("now Type your ticket ID to cancel the bookings in your name");
+				System.out.print("                                                                                                        " );
 				 String target = s.nextLine();
 				 List<String> fs = new ArrayList<>();
 		//this might cause error some time soon
@@ -621,7 +680,9 @@ final String RESET = "\u001B[0m";
 						
 					 }
 				 }
+					System.out.print("                                                                                                        " );
 				 System.out.println("type number of cancelled bookings to refund");
+					System.out.print("                                                                                                        " );
 				 int multiplier = s.nextInt();
 				 int value = standardPricing;
 				 int targetvalue = value*multiplier;
@@ -635,6 +696,7 @@ final String RESET = "\u001B[0m";
 				 
 				 standardPayments.remove(index);
 				 standardPayments.add(remains);
+					System.out.print("                                                                                                        " );
 				 System.out.println("refunded amount: "+refund);
 				 break;
 				 }	
@@ -644,7 +706,7 @@ final String RESET = "\u001B[0m";
 				 pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardPayments.txt", true));
 				 pw.print(standardPayments);
 					pw.flush();
-				
+					System.out.print("                                                                                                        " );
 				 System.out.println("updated bookings"+bookings);
 				Recurse();
 				
@@ -968,42 +1030,52 @@ System.out.println("");
 }
 	
 	static void Recurse() {
-		Object O1 = new Object();
-        final String CYAN = "\u001B[96m";
-        final String BOLD = "\u001B[1m";
-        final String CLEAR = "\u001B[0m";
-        final String DB = "\u001B[34m";
-        final String RED = "\u001B[31m";
-        System.out.println();
-        System.out.println(CYAN+"""
-        		     		     		     		     	███████╗██╗██╗     ███╗   ███╗██╗  ██╗ ██████╗ ██╗   ██╗███████╗███████╗
-        		     		     		     		     	██╔════╝██║██║     ████╗ ████║██║  ██║██╔═══██╗██║   ██║██╔════╝██╔════╝
-        		     		     		     		     	█████╗  ██║██║     ██╔████╔██║███████║██║   ██║██║   ██║███████╗█████╗ 
-        		     		     		     		     	██╔══╝  ██║██║     ██║╚██╔╝██║██╔══██║██║   ██║██║   ██║╚════██║██╔══╝  
-        		     		     		     		     	██║     ██║███████╗██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╔╝███████║███████╗ 
-        		     		     		     		     	╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
-   """+ NON);
-        System.out.println("        		 			 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-        System.out.println(BOLD+"										 		 	 	 W E L C O M E!" + NON);
-        System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-		System.out.println();
-		System.out.println(BOLD+"													 Please select mode of booking");
-		System.out.println();
-		System.out.println(BOLD + "														1. Premium");
-		System.out.println("													2. Standard");
-		System.out.println(RED +"														3. Exit" + CLEAR );
-		int input = s.nextInt();
-		s.nextLine();
-		if (input == 1) {
-			recursePremium();
-		}else if(input ==2) {
-			recurseStandard();
-		}else if (input ==3) {
-			return;
-		}else if(input == 177013) {
-			O1.adminLogin();
+	try {
+		while(true) {
+			Object O1 = new Object();
+	        final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        System.out.println();
+	        System.out.println(CYAN+"""
+	        		     		     		     		     	███████╗██╗██╗     ███╗   ███╗██╗  ██╗ ██████╗ ██╗   ██╗███████╗███████╗
+	        		     		     		     		     	██╔════╝██║██║     ████╗ ████║██║  ██║██╔═══██╗██║   ██║██╔════╝██╔════╝
+	        		     		     		     		     	█████╗  ██║██║     ██╔████╔██║███████║██║   ██║██║   ██║███████╗█████╗ 
+	        		     		     		     		     	██╔══╝  ██║██║     ██║╚██╔╝██║██╔══██║██║   ██║██║   ██║╚════██║██╔══╝  
+	        		     		     		     		     	██║     ██║███████╗██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╔╝███████║███████╗ 
+	        		     		     		     		     	╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
+	   """+ NON);
+	        System.out.println("        		 			 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+	        System.out.println(BOLD+"										 		 	 	 W E L C O M E!" + NON);
+	        System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+			System.out.println();
+			System.out.println(BOLD+"													 Please select mode of booking");
+			System.out.println();
+			System.out.println(BOLD + "														1. Premium");
+			System.out.println("													2. Standard");
+			System.out.println(RED +"														3. Exit" + CLEAR );
+			System.out.print("                                                                                                        " );//here
+			int input = s.nextInt();
+			s.nextLine();
+			if (input == 1) {
+				recursePremium();
+			}else if(input ==2) {
+				recurseStandard();
+			}else if (input ==3) {
+				return;
+			}else if(input == 177013) {
+				O1.adminLogin();
+			}
 		}
 		
+	}catch(InputMismatchException e) {
+		System.out.print("                                                                                                        " );
+		System.out.println("Use only numbers");
+		System.out.print("                                                                                                        " );
+		s.nextLine();
+	}
 		
 	}
 	static void recurseStandard() {
@@ -1027,7 +1099,7 @@ System.out.println("");
 		System.out.println("													3 Cancellation");
 		System.out.println("													4 Show Ticket");
 					
-				
+		System.out.print("                                                                                                        " );//for inputs
 				int input = s.nextInt();
 				s.nextLine();
 				if(input ==0) {
@@ -1043,7 +1115,9 @@ System.out.println("");
 					std.standardShowTicket();
 				}
 			}catch(InputMismatchException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println("numbers 1-4 only");
+				System.out.print("                                                                                                        " );
 				s.nextLine();
 			}
 		}
