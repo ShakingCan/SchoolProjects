@@ -351,9 +351,14 @@ final String RESET = "\u001B[0m";
 				System.out.println("Enter movie name:");
 				System.out.print("                                                                                                        " );
 				MovieName = s.nextLine();
-				if(Movies.contains(MovieName)&&isValidMovie(MovieName)) {
+				if(!MovieName.isEmpty()) {
+					for(String i: Movies) {
+						if(i.equalsIgnoreCase(MovieName)) {
+							break;
+						}
+					}
 					break;
-				}else if(CustomerName.equalsIgnoreCase("cancel")) {
+				}else if(MovieName.equalsIgnoreCase("cancel")) {
 					Recurse();
 				}
 				  System.out.print("                                                                                                        " );
@@ -377,6 +382,7 @@ final String RESET = "\u001B[0m";
 
 				System.out.print("                                                                                                        " );
 				String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
+
 				bookings.add(entry);
 				customers.add(CustomerName);
 				int nig = bookings.size() -1; 
@@ -452,7 +458,21 @@ final String RESET = "\u001B[0m";
 			}
 		recurseStandard();
 			}
-			
+	 
+	public void curateTicket(String id) {
+		boolean found = false;
+		for(int t=0; t<premiumBookings.size(); t++) {
+			String current = premiumBookings.get(t);
+			if (current.contains(id)) {
+				found = true;
+        		String Plit = current.replaceAll(",", "                                                                                                        ");
+        		System.out.println(Plit);
+        		
+        	} else {
+        		System.out.println("no matching ticket ID found");
+        	}
+			}
+		}
 	
 	
 	public void premiumMultiBook() {
@@ -481,7 +501,7 @@ final String RESET = "\u001B[0m";
 							break;
 						}
 					}
-					
+					System.out.print("                                                                                                        " );
 				System.out.println("just type cancel to cancel");
 					
 					while(true) {
@@ -520,9 +540,22 @@ final String RESET = "\u001B[0m";
 						
 						System.out.print("                                                                                                        " );
 						MovieName = s.nextLine();
-						if(Movies.contains(MovieName)&&isValidMovie(MovieName)) {
+						boolean isMatch = false;
+				        for (String movies : Movies) {
+				            if (movies.equalsIgnoreCase(MovieName)) {
+				                isMatch = true;
+				                break;
+				            }
+				        }
+						if(!MovieName.isEmpty()&& isMatch ) {
+							for(String i: Movies) {
+								if(i.equalsIgnoreCase(MovieName)) {
+									break;
+								}
+							}
 							break;
-						}else if(CustomerName.equalsIgnoreCase("cancel")) {
+						
+						}else if(MovieName.equalsIgnoreCase("cancel")) {
 							Recurse();
 						}
 						System.out.print("                                                                                                        " );
@@ -544,11 +577,11 @@ final String RESET = "\u001B[0m";
 					
 					for (int i = 0; i < BookNum; i++){
 						System.out.print("                                                                                                        " );
-						String entry =  "\nCustomer Name: " + CustomerName + "\nMovie Name: " + MovieName + "\nTicket ID: " + TicketID+ "\n";
+						String entry =  "\n,Customer Name: " + CustomerName + "\n,Movie Name: " + MovieName + "\n,Ticket ID: " + TicketID+ "\n";
 						premiumBookings.add(entry);
 						customers.add(CustomerName);
 						int nig = premiumBookings.size() -1; 
-						System.out.print("                                                                                                        " );
+						
 						System.out.println("your slots are "+nig);
 					}
 					int total = BookNum*premiumPricing;
@@ -560,6 +593,7 @@ final String RESET = "\u001B[0m";
 							System.out.println("enter payment");
 							System.out.print("                                                                                                        " );
 							int payment = s.nextInt();
+							s.nextLine();
 							if(payment ==total) {
 								premiumPayments.add(payment);
 								break;
@@ -584,8 +618,19 @@ final String RESET = "\u001B[0m";
 					}
 					System.out.print("                                                                                                        " );
 					System.out.println(BookNum+" Tickets successfully booked");
-					System.out.print("                                                                                                        " );
-					System.out.println(premiumBookings);
+					
+					while(true) {
+						System.out.print("                                                                                                        " );
+						System.out.println("Please enter your ticket ID again for confirmation");
+						String TID = s.nextLine();
+						if (!TID.isBlank()) {
+//here
+							curateTicket(TID);
+							break;
+						}else {
+							System.out.println("non existent");
+						}
+					}
 					
 					PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
 					 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt"));
@@ -1285,7 +1330,7 @@ System.out.println("");
 				System.out.println("													3 Cancellation");
 				System.out.println("													4 Show Ticket");
 				
-			
+				System.out.print("                                                                                                        " );
 				int input = s.nextInt();
 				s.nextLine();
 				if(input ==0) {

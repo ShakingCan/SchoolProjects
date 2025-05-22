@@ -10,4 +10,5 @@ void PremiummultiSeatRes();
 void Title();
 void premiumShowTicket();
 void standardShowTicket();
+void curateTicket(String id);
 }
