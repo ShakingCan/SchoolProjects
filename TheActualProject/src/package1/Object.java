@@ -620,18 +620,22 @@ final String RESET = "\u001B[0m";
 			try {
 				System.out.print("                                                                                                        " );	
 				System.out.println("enter number of bookings and seat reservations to cancel");
+				System.out.println();
 				System.out.print("                                                                                                        " );
 				 numtodel= s.nextInt();
+				 System.out.println();
 				 s.nextLine();
 				 if(numtodel>bs) {
 						System.out.print("                                                                                                        " );
 					 System.out.println("hollup man thats above the number of bookings");
+					 System.out.println();
 				 }else if(numtodel<=bs) {
 					 break;
 				 }
 			}catch(InputMismatchException e) {
 				System.out.print("                                                                                                        " );
 				System.out.println(" that aint a number");
+				System.out.println();
 				s.nextLine();
 			}
 		}
@@ -646,8 +650,10 @@ final String RESET = "\u001B[0m";
 						Standardstatus();
 						System.out.print("                                                                                                        " );
 							 System.out.println("type the seat codes you have reserevd to cancel reservation");
+							 System.out.println();
 								System.out.print("                                                                                                        " );
 							String input = s.nextLine();
+							
 							 if (Standardseats.containsKey(input)&&isStandardSeatValid(input)&&	!Standardseats.get(input).equals("available")) {
 								 Standardseats.put(input,"available");
 								 Standardstatus.put(input, GREEN+"██"+NON  );
@@ -727,17 +733,21 @@ final String RESET = "\u001B[0m";
 		int bs = premiumBookings.size() -1; 
 		while(true) {
 			try {
-				
+				System.out.print("                                                                                                        " );
 				System.out.println("enter number of bookings and seat reservations to cancel");
+				System.out.print("                                                                                                        " );
 				 numtodel= s.nextInt();
 				 s.nextLine();
 				 if(numtodel>bs) {
+					 System.out.print("                                                                                                        " );
 					 System.out.println("hollup man thats above the number of bookings");
 				 }else if(numtodel<=bs) {
 					 break;
 				 }
 			}catch(InputMismatchException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println("nigga that aint a number");
+				System.out.print("                                                                                                        " );
 				s.nextLine();
 			}
 		}
@@ -757,6 +767,7 @@ final String RESET = "\u001B[0m";
 							 if (Premiumseats.containsKey(input)&&isPremiumSeatValid(input)&&	!Premiumseats.get(input).equals("available")) {
 								 Premiumseats.put(input,"available");
 								 Premiumstatus.put(input, GREEN+"██"+NON  );
+								 System.out.print("                                                                                                        " );
 								System.out.println(input+ "is now "+ Premiumseats.get(input));
 								Premiumstatus();
 							}else if (input == "0") {
@@ -764,12 +775,14 @@ final String RESET = "\u001B[0m";
 							}
 							 else {
 								 i--;
+								 System.out.print("                                                                                                        " );
 								 System.out.println("follow the instructions!");
 							}
 						
 					}
-			
+					System.out.print("                                                                                                        " );
 				System.out.println("now Type your ticket ID to cancel all the bookings in your name");
+				System.out.print("                                                                                                        " );
 				 String target = s.nextLine();
 				 List<String> fs = new ArrayList<>();
 				 for (int  i=premiumBookings.size()-1 ;i>=0 && numtodel>0;i--) {
@@ -785,7 +798,9 @@ final String RESET = "\u001B[0m";
 						
 					 }
 				 }
+				 System.out.print("                                                                                                        " );
 				 System.out.println("type number of cancelled bookings to refund");
+				 System.out.print("                                                                                                        " );
 				 int multiplier = s.nextInt();
 				 int value = premiumPricing;
 				 int targetvalue = value*multiplier;
@@ -799,6 +814,7 @@ final String RESET = "\u001B[0m";
 				 
 				 premiumPayments.remove(index);
 				 premiumPayments.add(remains);
+				 System.out.print("                                                                                                        " );
 				 System.out.println("refunded amount: "+refund);
 				 break;
 				 }	
@@ -819,6 +835,7 @@ final String RESET = "\u001B[0m";
 					 if(str.contains(target)) {
 						 bookings.remove(it);
 						 numtodel--;*/
+					System.out.print("                                                                                                        " );
 				 System.out.println("updated bookings"+premiumBookings);
 				Recurse();
 		           			 
@@ -835,9 +852,13 @@ final String RESET = "\u001B[0m";
 	public void check() {
 		Path ip = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
 		File booked = new File("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
+		System.out.print("                                                                                                        " );
 		  System.out.println("These are all the booked tickets");
+		  System.out.print("                                                                                                        " );
 		  System.out.println(bookings);
+		  System.out.print("                                                                                                        " );
 		  System.out.println("Would you like to confirm it and get the receipt?(yes or no)");
+		  System.out.print("                                                                                                        " );
 		  String decision = s.nextLine();
 		  
 		  if (decision.equalsIgnoreCase("yes")) {
@@ -846,6 +867,7 @@ final String RESET = "\u001B[0m";
 				  try {
 		                Desktop.getDesktop().open(booked); 
 		            } catch (IOException e) {
+		            	System.out.print("                                                                                                        " );
 		                System.out.println("Error opening the file: " + e.getMessage());
 		            }
 				  pw.println(bookings);
@@ -863,10 +885,13 @@ final String RESET = "\u001B[0m";
 	@Override
 	
 	public void StandardmultiSeatRes() {
+		System.out.print("                                                                                                        " );
 		System.out.println("Welcome! this is the multi seat reservation section.");
 		
 		int nameMatchCount=0;
+		System.out.print("                                                                                                        " );
 		System.out.println("now Type your ticket ID to verify if you really booked before reserving multi seats");
+		System.out.print("                                                                                                        " );
 		 String target = s.nextLine();
 		
 		 List<String> fs = new ArrayList<>();
@@ -881,15 +906,21 @@ final String RESET = "\u001B[0m";
 			 for(int i1=0; i1<nameMatchCount;i1++) {
 				 while(true) {
 						try {
+							System.out.print("                                                                                                        " );
 							System.out.println("Type cancel to cancel");
+							System.out.print("                                                                                                        " );
 							System.out.println("green means avialable and red means occupied");
+							
 							Standardstatus();
+							System.out.print("                                                                                                        " );
 							System.out.println("Please enter seat ID to proceed with seat reservation(A1-A12)");
 							
 							
 							String choice = s.nextLine();
 							 if (Standardseats.get(choice).equals("Reserved")) {  
+								 System.out.print("                                                                                                        " );
 							        System.out.println("Sorry, the seat " + choice + " is already reserved.");
+							        System.out.print("                                                                                                        " );
 							        System.out.println("try a different seat");
 							        
 							    }
@@ -903,6 +934,7 @@ final String RESET = "\u001B[0m";
 							}
 						}
 						catch(NullPointerException e) {
+							System.out.print("                                                                                                        " );
 							System.out.println("Upto A12 only. Try again");
 						}
 					}
@@ -916,10 +948,13 @@ final String RESET = "\u001B[0m";
 	@Override
 	
 	public void PremiummultiSeatRes() {
+		System.out.print("                                                                                                        " );
 		System.out.println("Welcome! this is the multi seat reservation section.");
 		
 		int nameMatchCount=0;
+		System.out.print("                                                                                                        " );
 		System.out.println("now Type your ticket ID to verify if you really booked before reserving multi seats");
+		System.out.print("                                                                                                        " );
 		 String target = s.nextLine();
 		
 		 List<String> fs = new ArrayList<>();
@@ -935,18 +970,25 @@ final String RESET = "\u001B[0m";
 			 for(int i1=0; i1<nameMatchCount;i1++) {
 				 while(true) {
 						try {
+							System.out.print("                                                                                                        " );
 							System.out.println("type cancel to cancel");
+							System.out.print("                                                                                                        " );
 							System.out.println("green means avialable and red means occupied");
 							Premiumstatus();
+							System.out.print("                                                                                                        " );
 							System.out.println("Please enter seat ID to proceed with seat reservation(A1-A12)");
 							String choice = s.nextLine();
 							 if (Premiumseats.get(choice).equals("Reserved")) {  
+								 System.out.print("                                                                                                        " );
 							        System.out.println("Sorry, the seat " + choice + " is already reserved.");
+							        System.out.print("                                                                                                        " );
 							        System.out.println("try a different seat");
 							        
 							    }
 							if (Premiumseats.containsKey(choice)&& !Premiumseats.get(choice).equals("Reserved") && isPremiumSeatValid(choice)) {
+								System.out.print("                                                                                                        " );
 								System.out.println("Successfully registered. your seat is "+ choice);
+								
 								Premiumseats.put(choice, "Reserved");
 								Premiumstatus.put(choice, RED + "██" + NON);
 								break;
@@ -956,6 +998,7 @@ final String RESET = "\u001B[0m";
 							
 						}
 						catch(NullPointerException e) {
+							System.out.print("                                                                                                        " );
 							System.out.println("Upto A12 only. Try again");
 						}
 					}
@@ -1012,7 +1055,7 @@ for (Map.Entry<String,String> entry: Standardseats.entrySet()) {
 	
 		}
 System.out.println("");
-System.out.println("");
+
 	}
 public void PremiumseatCount() {
 	int regulator=0;
@@ -1026,7 +1069,7 @@ for (Map.Entry<String,String> entry: Premiumseats.entrySet()) {
 		 }
 		}
 System.out.println("");
-System.out.println("");
+
 }
 	
 	static void Recurse() {
@@ -1258,6 +1301,7 @@ System.out.println("");
 					prm.premiumShowTicket();
 				}
 			}catch(InputMismatchException e) {
+				System.out.print("                                                                                                        " );
 				System.out.println("number 1-5 only");
 				s.nextLine();
 			}
