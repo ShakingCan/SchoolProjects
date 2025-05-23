@@ -465,15 +465,16 @@ final String RESET = "\u001B[0m";
 		 System.out.println("                                                                     ║                            🎟️ CURATED PREMIUM TICKETS                                  ║");
 		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
 		int stopper = reg-num;
-		for (int  it=premiumBookings.size()-1 ;it>=0 && num<stopper;it--) {
+		for (int  it=premiumBookings.size()-1 ;it>=0 && num>0;it--) {
 			String str = premiumBookings.get(it);
 			String target = id;
 			if(str.contains(target)) {
 				String Plit = str.replaceAll(",", "                                                                                                        ");
         		System.out.println(Plit);
         		num--;
+        		System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
 			}
-			System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
+			
 		}
 		
 		
