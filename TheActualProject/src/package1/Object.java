@@ -257,7 +257,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	     Premiumstatus.put("A37P", GREEN + "██" + NON);
 	     Premiumstatus.put("A38P", GREEN + "██" + NON);
 	     Premiumstatus.put("A39P", GREEN + "██" + NON);
-	     Premiumstatus.put("A40P", GREEN + "██" + NON);
+	     Premiumstatus.put("A40P", GREEN + "██" + NON+ "\n");
 	     Premiumstatus.put("A41P", GREEN + "██" + NON);
 	     Premiumstatus.put("A42P", GREEN + "██" + NON);
 	     Premiumstatus.put("A43P", GREEN + "██" + NON);
@@ -459,19 +459,45 @@ final String RESET = "\u001B[0m";
 		recurseStandard();
 			}
 	 
-	public void curateTicket(String id) {
-		boolean found = false;
-		for(int t=0; t<premiumBookings.size(); t++) {
-			String current = premiumBookings.get(t);
-			if (current.contains(id)) {
-				found = true;
-        		String Plit = current.replaceAll(",", "                                                                                                        ");
+	public void curatePremiumTicket(String id,int num, int reg) {
+
+		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
+		 System.out.println("                                                                     ║                            🎟️ CURATED PREMIUM TICKETS                                  ║");
+		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
+		int stopper = reg-num;
+		for (int  it=premiumBookings.size()-1 ;it>=0 && num<stopper;it--) {
+			String str = premiumBookings.get(it);
+			String target = id;
+			if(str.contains(target)) {
+				String Plit = str.replaceAll(",", "                                                                                                        ");
         		System.out.println(Plit);
-        		
-        	} else {
-        		System.out.println("no matching ticket ID found");
-        	}
+        		num--;
 			}
+			System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
+		}
+		
+		
+		
+		
+		
+		
+		/*boolean found = false;
+		while (!found) {
+
+			for(int t=1; t<premiumBookings.size(); t++) {
+				String current = premiumBookings.get(t);
+				if (current.contains(id)) {
+					found = true;
+	        		String Plit = current.replaceAll(",", "                                                                                                        ");
+	        		System.out.println(Plit);
+	        		
+	        	} else {
+	        		System.out.print("                                                                                                        " ); 
+	        		System.out.println("Others' ticket");
+	        		s.nextLine();
+	        	}
+				}
+		}*/
 		}
 	
 	
@@ -618,19 +644,22 @@ final String RESET = "\u001B[0m";
 					}
 					System.out.print("                                                                                                        " );
 					System.out.println(BookNum+" Tickets successfully booked");
-					
-					while(true) {
+					int regu = premiumBookings.size();
+					curatePremiumTicket(TicketID, BookNum, regu);
+					/*while(true) {
 						System.out.print("                                                                                                        " );
 						System.out.println("Please enter your ticket ID again for confirmation");
+						System.out.print("                                                                                                        " );
 						String TID = s.nextLine();
-						if (!TID.isBlank()) {
+						if (premiumBookings.contains(TID)) {
 //here
 							curateTicket(TID);
 							break;
 						}else {
 							System.out.println("non existent");
+							s. nextLine();
 						}
-					}
+					}*/
 					
 					PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
 					 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt"));
@@ -795,7 +824,7 @@ final String RESET = "\u001B[0m";
 				System.out.print("                                                                                                        " );
 				s.nextLine();
 			}
-		}
+		}System.out.print("                                                                                                        " );
 			System.out.println("If you're done cancelling seat reservation type 0");
 		while(true) {
 			try {
@@ -806,8 +835,9 @@ final String RESET = "\u001B[0m";
 						
 						
 						Premiumstatus();
+						System.out.print("                                                                                                        " );
 							 System.out.println("type your seat name or code to cancel reservation");
-							 
+							 System.out.print("                                                                                                        " );
 							String input = s.nextLine();
 							 if (Premiumseats.containsKey(input)&&isPremiumSeatValid(input)&&	!Premiumseats.get(input).equals("available")) {
 								 Premiumseats.put(input,"available");
@@ -881,7 +911,10 @@ final String RESET = "\u001B[0m";
 						 bookings.remove(it);
 						 numtodel--;*/
 					System.out.print("                                                                                                        " );
-				 System.out.println("updated bookings"+premiumBookings);
+					
+				 System.out.println("updated bookings");
+				 int regu = premiumBookings.size();
+				 curatePremiumTicket(target, multiplier,regu);
 				Recurse();
 		           			 
 			
@@ -1022,6 +1055,7 @@ final String RESET = "\u001B[0m";
 							Premiumstatus();
 							System.out.print("                                                                                                        " );
 							System.out.println("Please enter seat ID to proceed with seat reservation(A1-A12)");
+							System.out.print("                                                                                                        " );
 							String choice = s.nextLine();
 							 if (Premiumseats.get(choice).equals("Reserved")) {  
 								 System.out.print("                                                                                                        " );
@@ -1036,6 +1070,7 @@ final String RESET = "\u001B[0m";
 								
 								Premiumseats.put(choice, "Reserved");
 								Premiumstatus.put(choice, RED + "██" + NON);
+								Premiumstatus();
 								break;
 							}else if(choice.equalsIgnoreCase("cancel")) {
 								Recurse();
@@ -1044,7 +1079,7 @@ final String RESET = "\u001B[0m";
 						}
 						catch(NullPointerException e) {
 							System.out.print("                                                                                                        " );
-							System.out.println("Upto A12 only. Try again");
+							System.out.println("Upto A50P only. Try again");
 						}
 					}
 			}
@@ -1075,7 +1110,31 @@ for (Map.Entry<String,String> entry: Standardstatus.entrySet()) {
 }
 	}
 static void Premiumstatus() {
-	int regulator=0;
+	 System.out.println("                                                                ╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+     System.out.println("                                                                ║                                      💎 PREMIUM STATUS BLOCKS                                        ║");
+     System.out.println("                                                                ╠══════════════════════════════════════════════════════════════════════════════════════════════════════╣");
+
+     int count = 0;
+     System.out.print("                                                                ║ ");
+     for (Map.Entry<String, String> entry : Premiumstatus.entrySet()) {
+         String seatCode = entry.getKey();
+         String seatBlock = entry.getValue();
+
+         // Pad to make it look aligned, e.g., "A1P ██"
+         System.out.printf("%-6s", seatCode + " " + seatBlock+" ");
+         count++;
+
+         if (count % 10 == 0) {
+             System.out.println("                                                               ║");
+             if (count < 50) System.out.print("                                                                ║");
+         }
+     }
+
+     System.out.println("                                                                ╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝");
+ }
+
+	
+	/*	int regulator=0;
 for (Map.Entry<String,String> entry: Premiumstatus.entrySet()) {
 String key= entry.getKey();
 String value = entry.getValue();
@@ -1084,9 +1143,9 @@ String value = entry.getValue();
  if(regulator%10==0) {
 	 System.out.println("");
  }
-}
+}*/
 
-	}
+	
 	public void StandardseatCount() {
 		int regulator=0;
 for (Map.Entry<String,String> entry: Standardseats.entrySet()) {
@@ -1403,20 +1462,30 @@ System.out.println("");
 		 }
 	}
 	public void premiumShowTicket() {
+		System.out.print("                                                                                                        " );
 System.out.println("Welcome! this is the premium ticket viewing section.");
 		
-		
+System.out.print("                                                                                                        " );
 		System.out.println("now Type the ticket ID to identify which ticket to show");
+		System.out.print("                                                                                                        " );
 		 String target = s.nextLine();
+		 System.out.print("                                                                                                        " );
+		 System.out.println("now type how many tickets you wanna see");
+		 System.out.print("                                                                                                        " );
+		 int count = s.nextInt();
+		 s.nextLine();
+		 int regu = premiumBookings.size();
+		 curatePremiumTicket(target, count,regu );
 		
 
-		 for (int  i=0;i<premiumBookings.size();i++) {
+		 /*for (int  i=0;i<premiumBookings.size();i++) {
 			 String str = premiumBookings.get(i);
 			 if(str.contains(target)) {
 				 System.out.println(premiumBookings.get(i));
+				 //work on this
 			
 			 }				
-		 }
+		 }*/
 	}
 
 	
