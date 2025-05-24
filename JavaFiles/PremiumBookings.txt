@@ -1,0 +1,9 @@
+[, 
+,Customer Name: allan
+,Movie Name: the matrix
+,Ticket ID: 1234
+,Seats reserved: A1P A2P A3P
+,Payment: 2000
+,Change: 200
+,Date: 2025-05-25
+,Time: 00:17:25]

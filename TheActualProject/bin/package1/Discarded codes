@@ -1,4 +1,12 @@
-	
+
+		 /*for (int  i=0;i<premiumBookings.size();i++) {
+			 String str = premiumBookings.get(i);
+			 if(str.contains(target)) {
+				 System.out.println(premiumBookings.get(i));
+				 //work on this
+			
+			 }				
+		 }*/	
 		/*while(true) {
 						System.out.print("                                                                                                        " );
 						System.out.println("Please enter your ticket ID again for confirmation");

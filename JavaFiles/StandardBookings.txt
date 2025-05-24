@@ -1,0 +1,9 @@
+[, 
+,Customer Name: tacles
+,Movie Name: The dark knight
+,Ticket ID: 3333
+,Seats reserved: A1 A2 A3
+,Payment: 2000
+,Change: 1100
+,Date: 2025-05-25
+,Time: 00:18:26]
