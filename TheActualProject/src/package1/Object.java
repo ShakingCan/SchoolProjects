@@ -9,6 +9,8 @@ import java.io.FileWriter;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.awt.Desktop;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.io.PrintWriter;
 import java.io.BufferedReader;
 import javax.sound.sampled.*;
@@ -399,6 +401,7 @@ final String RESET = "\u001B[0m";
 					System.out.println("enter payment");
 					System.out.print("                                                                                                        " );
 					int payment = s.nextInt();
+					s.nextLine();
 					if(payment ==total) {
 						System.out.print("                                                                                                        " );
 						System.out.println(bookings);
@@ -426,8 +429,8 @@ final String RESET = "\u001B[0m";
 				}catch(InputMismatchException e) {
 					System.out.print("                                                                                                        " );
 					System.out.println("numbers only");
-					System.out.print("                                                                                                        " );
-					s.nextLine();
+					
+					
 				}
 			}
 			System.out.print("                                                                                                        " );
@@ -455,14 +458,13 @@ final String RESET = "\u001B[0m";
 			}catch(InputMismatchException e) {
 				System.out.print("                                                                                                        " );
 				System.out.println("Numbers only");
+				s.nextLine();
 			}
 		recurseStandard();
 			}
-	 
-	public void curatePremiumTicket(String id,int num, int reg) {
-
+	 static void premresult(String id,int num, int reg) {
 		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
-		 System.out.println("                                                                     ║                            🎟️ CURATED PREMIUM TICKETS                                  ║");
+		 System.out.println("                                                                     ║                                      PREMIUM TICKETS                                   ║");
 		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
 		int stopper = reg-num;
 		for (int  it=premiumBookings.size()-1 ;it>=0 && num>0;it--) {
@@ -476,8 +478,26 @@ final String RESET = "\u001B[0m";
 			}
 			
 		}
+	 }
+	public void curatePremiumTicket(String id,int num, int reg) {
+
+		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
+		 System.out.println("                                                                     ║                            🎟️ CURATED PREMIUM TICKETS                                  ║");
+		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
+		int stopper = reg-num;
+		for (int  it=premiumBookings.size()-1 ;it>=0 && num>0;it--) {
+			String str = premiumBookings.get(it);
+			String target = id;
+			if(str.contains(target)) {
+				String Plit = str.replace(",", "                                                                                                        ");
+        		System.out.println(Plit);
+        		num--;
+        		System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
+			}
+			
+		}
 		
-		
+	}
 		
 		
 		
@@ -499,7 +519,7 @@ final String RESET = "\u001B[0m";
 	        	}
 				}
 		}*/
-		}
+		
 	
 	
 	public void premiumMultiBook() {
@@ -512,12 +532,12 @@ final String RESET = "\u001B[0m";
 				int BookNum =0;
 				String CustomerName;
 				String MovieName;
-		        
+		        String seatcodes;
 
 		        // Print padded prompt
 		       
 				
-				try (Scanner scan = new Scanner(fp)) {
+				try  {
 					while(true) {
 						System.out.print("                                                                                                        " );
 						System.out.println("Please enter how many tickets will be booked");
@@ -550,10 +570,10 @@ final String RESET = "\u001B[0m";
 						
 						
 						
-				System.out.println(CYAN + "									  ╔═══════════════════════════════════════════════════════════════════════════════════╗" + RESET);
-				System.out.println(CYAN + "									  ║      🎬 Movies				  				      ║" + RESET);
-				System.out.println(CYAN+"									  ║ "+Movies+ 							   " ║");
-				System.out.println(CYAN + "									  ╠═══════════════════════════════════════════════════════════════════════════════════╣" + RESET);
+				System.out.println(CYAN + "						     ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗" + RESET);
+				System.out.println(CYAN + "						     ║              			                             🎬 Movies                                                     ║" + RESET);
+				System.out.println(CYAN+"						     ║ "+Movies+"                                           ║");
+				System.out.println(CYAN + "						     ╠═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣" + RESET);
 						
 						
 						
@@ -601,21 +621,27 @@ final String RESET = "\u001B[0m";
 						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
-					
-					for (int i = 0; i < BookNum; i++){
-						System.out.print("                                                                                                        " );
-						String entry =  "\n,Customer Name: " + CustomerName + "\n,Movie Name: " + MovieName + "\n,Ticket ID: " + TicketID+ "\n";
-						premiumBookings.add(entry);
-						customers.add(CustomerName);
-						int nig = premiumBookings.size() -1; 
-						
-						System.out.println("your slots are "+nig);
-					}
-					int total = BookNum*premiumPricing;
-					System.out.print("                                                                                                        " );
-					System.out.println("total cost: "+ total);
 					while(true) {
-						try {
+						System.out.print("                                                                                                        " );
+						System.out.println("if more than 1, use space ex: A1P A2P A3P");
+						System.out.print("                                                                                                        " );
+						System.out.println("Enter planned seat codes: ");
+						System.out.print("                                                                                                        " );
+						seatcodes = s.nextLine();
+						if(premiumseattyping(seatcodes)) {
+							break;
+						}else if(seatcodes.equalsIgnoreCase("cancel")) {
+							Recurse();
+						}
+						System.out.print("                                                                                                        " );
+						System.out.println("Wrong format. Try again.");
+					}
+					while(true) {
+						try {	
+							int change=0;
+							int total = BookNum*premiumPricing;
+							System.out.print("                                                                                                        " );
+							System.out.println("total cost: "+ total);
 							System.out.print("                                                                                                        " );
 							System.out.println("enter payment");
 							System.out.print("                                                                                                        " );
@@ -623,44 +649,66 @@ final String RESET = "\u001B[0m";
 							s.nextLine();
 							if(payment ==total) {
 								premiumPayments.add(payment);
+								for (int i = 0; i < BookNum; i++){
+									LocalDateTime now = LocalDateTime.now(); // Gets current date and time
+
+							        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+							        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+							        String formattedDate = now.format(date);
+							        String formattedTime = now.format(time);
+									String entry =  "\n,Customer Name: " + CustomerName + "\n,Movie Name: " + MovieName + "\n,Ticket ID: " + TicketID+ "\n,Seats reserved: "+seatcodes+"\n,Payment: "+payment+"\n,Change: "+change
+											+"\n,Date: "+ formattedDate+ "\n,Time: "+formattedTime;
+									premiumBookings.add(entry);
+									customers.add(CustomerName);
+									int nig = premiumBookings.size() -1; 
+									
+									
+								}
 								break;
 							}else if(payment>total) {
-								int change = payment-total;
+								 change = payment-total;
 								int recordpay = BookNum*premiumPricing;
 								System.out.print("                                                                                                        " );
 								System.out.println("Change: "+ change);
 								premiumPayments.add(recordpay);
+								for (int i = 0; i < BookNum; i++){
+									LocalDateTime now = LocalDateTime.now(); // Gets current date and time
+
+							        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+							        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
+							        String formattedDate = now.format(date);
+							        String formattedTime = now.format(time);
+									String entry =  "\n,Customer Name: " + CustomerName + "\n,Movie Name: " + MovieName + "\n,Ticket ID: " + TicketID+ "\n,Seats reserved: "+seatcodes+"\n,Payment: "+payment+"\n,Change: "+change
+											+"\n,Date: "+ formattedDate+ "\n,Time: "+formattedTime;
+									premiumBookings.add(entry);
+									customers.add(CustomerName);
+									int nig = premiumBookings.size() -1; 
+									
+									
+								}
 								break;
 							}else {
 								System.out.print("                                                                                                        " );
 								System.out.println("sorry, your payment is insufficient");
 								System.out.print("                                                                                                        " );
 								System.out.println("Please pay with higher amount");
+								
 							}
+							
+							
+					
 						}catch(InputMismatchException e) {
 							System.out.print("                                                                                                        " );
 							System.out.println("numbers only");
+							
 							s.nextLine();
 						}
 					}
 					System.out.print("                                                                                                        " );
 					System.out.println(BookNum+" Tickets successfully booked");
 					int regu = premiumBookings.size();
-					curatePremiumTicket(TicketID, BookNum, regu);
-					/*while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Please enter your ticket ID again for confirmation");
-						System.out.print("                                                                                                        " );
-						String TID = s.nextLine();
-						if (premiumBookings.contains(TID)) {
-//here
-							curateTicket(TID);
-							break;
-						}else {
-							System.out.println("non existent");
-							s. nextLine();
-						}
-					}*/
+					premresult(TicketID, BookNum, regu);
+				
 					
 					PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
 					 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt"));
@@ -680,10 +728,13 @@ final String RESET = "\u001B[0m";
 					}catch(InputMismatchException e) {
 						System.out.print("                                                                                                        " );
 						System.out.println("Numbers only");
+						s.nextLine();
+						recursePremium();
+					
 					}
 				
-				recursePremium();
-					}
+				PremiummultiSeatRes();
+				}
 
 			 	
 
@@ -1086,7 +1137,7 @@ final String RESET = "\u001B[0m";
 			}
 
 		 }
-			Recurse();
+			recursePremium();
 
 	}
 
@@ -1098,6 +1149,11 @@ final String RESET = "\u001B[0m";
 	public boolean isPremiumSeatValid(String seat) {
 		return seat.matches("^A([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|50)P$");
 	}
+	public boolean premiumseattyping(String seat) {
+		return seat.matches("^A(?:[1-9]|[1-4][0-9]|50)P(?:\\s*\\s*A(?:[1-9]|[1-4][0-9]|50)P)*$");
+
+	}
+	
 	static void Standardstatus() {
 		int regulator=0;
 for (Map.Entry<String,String> entry: Standardstatus.entrySet()) {
@@ -1386,9 +1442,9 @@ System.out.println("");
 				System.out.println();
 				System.out.println(BOLD+RED+"														0 Back"+CLEAR);
 				System.out.println(BOLD+"														1 Ticket Booking");
-				System.out.println("													2 Seat Reservation");
+				System.out.println("													2 Show Ticket");
 				System.out.println("													3 Cancellation");
-				System.out.println("													4 Show Ticket");
+				System.out.println("													4 receipt");
 				
 				System.out.print("                                                                                                        " );
 				int input = s.nextInt();
@@ -1399,15 +1455,16 @@ System.out.println("");
 				else if(input ==1 ) {
 					prm.premiumMultiBook();
 				}else if (input == 2) {
-					prm.PremiummultiSeatRes();
+					prm.premiumShowTicket();
 				}else if (input ==3 ) {
 					prm.PremiummultiCancel();
 				}else if(input ==4) {
-					prm.premiumShowTicket();
+					
 				}
 			}catch(InputMismatchException e) {
-				System.out.print("                                                                                                        " );
-				System.out.println("number 1-5 only");
+				
+				System.out.println("number 1-4 only");
+					
 				s.nextLine();
 			}
 		}
