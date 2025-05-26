@@ -2,7 +2,7 @@ package package1;
 
 public interface adminshit {
 void adminLogin();
-void adminLogout();
+
 void addNewMovie();
 void editMovie();
 void adminRecurse();

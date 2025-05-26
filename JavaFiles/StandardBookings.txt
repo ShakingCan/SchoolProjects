@@ -1,9 +1,25 @@
-[, 
-,Customer Name: tacles
-,Movie Name: The dark knight
-,Ticket ID: 3333
+[
+,Customer Name: niggalus
+,Movie Name: Fight Club
+,Ticket ID: 1344
 ,Seats reserved: A1 A2 A3
-,Payment: 2000
-,Change: 1100
-,Date: 2025-05-25
-,Time: 00:18:26]
+,Payment: 999
+,Change: 99
+,Date: 2025-05-26
+,Time: 22:38:14, 
+,Customer Name: niggalus
+,Movie Name: Fight Club
+,Ticket ID: 1344
+,Seats reserved: A1 A2 A3
+,Payment: 999
+,Change: 99
+,Date: 2025-05-26
+,Time: 22:38:14, 
+,Customer Name: niggalus
+,Movie Name: Fight Club
+,Ticket ID: 1344
+,Seats reserved: A1 A2 A3
+,Payment: 999
+,Change: 99
+,Date: 2025-05-26
+,Time: 22:38:14]
