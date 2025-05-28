@@ -13,7 +13,10 @@ public class RunClass extends Object {
 		Scanner scan = new Scanner(System.in);
 		do {
 			try {
+				Premiumstatus();
+				Standardstatus();
 				Recurse();
+				
 				}
 		
 			catch(InputMismatchException e) {

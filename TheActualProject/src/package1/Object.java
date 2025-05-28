@@ -7,6 +7,7 @@ import java.io.IOException;
 import static java.nio.file.AccessMode.*;
 import java.io.FileWriter;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.Desktop;
 import java.time.LocalDateTime;
@@ -415,13 +416,15 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.println("Wrong format. Try again.");
 					}
 					while(true) {
+						String codePattern = "A([1-9]|[1-4][0-9]|50)";
+					String fullPattern = "^(" + codePattern + "\\s?){" + BookNum + "}$";
 						System.out.print("                                                                                                        " );
 						System.out.println("If more than 1, use space ex: A1 A2 A3");
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter planned seat codes: ");
 						System.out.print("                                                                                                        " );
 						seatcodes = s.nextLine();
-						if(standardseattyping(seatcodes)) {
+						if(seatcodes.matches(fullPattern)&&!seatcodes.equalsIgnoreCase("cancel")) {
 							break;
 						}else if(seatcodes.equalsIgnoreCase("cancel")) {
 							recurseStandard();
@@ -642,9 +645,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				String CustomerName;
 				String MovieName;
 		        String seatcodes;
-
-		        // Print padded prompt
-		       
+		        
+		        
+		    
 				
 				try  {
 					while(true) {
@@ -745,13 +748,18 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.println("Wrong format. Try again.");
 					}
 					while(true) {
+						//("^A(?:[1-9]|[1-4][0-9]|50)P(?:\\s*\\s*A(?:[1-9]|[1-4][0-9]|50)P)*$");
+						//("A([1-9]|[1-4][0-9]|50)P{+count+}");
+						String codePattern = "A([1-9]|[1-4][0-9]|50)P";
+						String fullPattern = "^(" + codePattern + "\\s?){" + BookNum + "}$";
+						 
 						System.out.print("                                                                                                        " );
 						System.out.println("if more than 1, use space ex: A1P A2P A3P");
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter planned seat codes: ");
 						System.out.print("                                                                                                        " );
 						seatcodes = s.nextLine();
-						if(premiumseattyping(seatcodes)&&!seatcodes.equalsIgnoreCase("cancel")) {
+						if(seatcodes.matches(fullPattern)&&!seatcodes.equalsIgnoreCase("cancel")) {
 							break;
 						}else if(seatcodes.equalsIgnoreCase("cancel")) {
 							recursePremium();
@@ -1156,7 +1164,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 		System.out.println("Welcome this is seat reservation section.");
 		
 		int nameMatchCount=0;
-		System.out.print("                                                                          " );
+		System.out.print("                                                                                             " );
 		System.out.println("Enter your ticket ID for verification");
 		System.out.print("                                                                                                        " );
 		 String target = s.nextLine();
@@ -1167,7 +1175,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 			 if(str.contains(target)) {
 				 bookings.get(i);
 				 nameMatchCount++;
-			 }				
+			 }else {
+				 StandardmultiSeatRes(); 
+			 }
 		 }
 		 if (nameMatchCount > 0) {
 			 for(int i1=0; i1<nameMatchCount;i1++) {
@@ -1220,7 +1230,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 		System.out.println("Welcome this is seat reservation section.");
 		
 		int nameMatchCount=0;
-		System.out.print("                                                                          " );
+		System.out.print("                                                                                             " );
 		System.out.println("Enter your ticket ID for verification");
 		System.out.print("                                                                                                        " );
 		 String target = s.nextLine();
@@ -1231,7 +1241,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 			 if(str.contains(target)) {
 				 premiumBookings.get(i);
 				 nameMatchCount++;
-			 }				
+			 }else {
+				 PremiummultiSeatRes();
+			 }
 		 }
 		 if (nameMatchCount > 0) {
 			 						
@@ -1287,10 +1299,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	public boolean isPremiumSeatValid(String seat) {
 		return seat.matches("^A([1-9]|1[0-9]|2[0-9]|3[0-9]|4[0-9]|50)P$");
 	}
-	public boolean premiumseattyping(String seat) {
-		return seat.matches("^A(?:[1-9]|[1-4][0-9]|50)P(?:\\s*\\s*A(?:[1-9]|[1-4][0-9]|50)P)*$");
-
-	}
+	
 	public boolean standardseattyping(String seat) {
 		return seat.matches("^A(?:[1-9]|[1-4][0-9]|50)(?:\\sA(?:[1-9]|[1-4][0-9]|50))*$");
 
@@ -1300,13 +1309,34 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 		System.out.println("                                                                ╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
 	     System.out.println("                                                                ║                                      🎟️ STANDARD STATUS BLOCKS                                       ║");
 	     System.out.println("                                                                ╠══════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-
+	     System.out.println("                                                                ║                                                                                                      ║");
+	     System.out.println("                                                                ║                                         |  S C R E E N  |                                            ║");
+	     System.out.println("                                                                ║                                                                                                      ║");
+	     System.out.println("                                                                ║ Left Exit                                                                                Right Exit  ║");
+	     System.out.println("                                                                ║                                                                                                      ║");
 	     int count = 0;
 	     System.out.print("                                                                ║ ");
 	     for (Map.Entry<String, String> entry : Standardstatus.entrySet()) {
 	         String seatCode = entry.getKey();
 	         String seatBlock = entry.getValue();
-
+	         switch(count) {
+	         case 0:
+	        	 System.out.print("R1   ");
+	        	 break;
+	         case 10:
+	        	 System.out.print(" R2   ");
+	        	 break;
+	         case 20:
+	        	 System.out.print(" R3   ");
+	        	 break;
+	         case 30:
+	        	 System.out.print(" R4   ");
+	        	 break;
+	         case 40:
+	        	 System.out.print(" R5   ");
+	        	 break;
+	   
+	         }
 	        
 	         System.out.printf("%-6s", seatCode + " " + seatBlock+" ");
 	         count++;
@@ -1323,18 +1353,42 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	 System.out.println("                                                                ╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗");
      System.out.println("                                                                ║                                      💎 PREMIUM STATUS BLOCKS                                        ║");
      System.out.println("                                                                ╠══════════════════════════════════════════════════════════════════════════════════════════════════════╣");
-
+     System.out.println("                                                                ║                                                                                                      ║");
+     System.out.println("                                                                ║                                         |  S C R E E N  |                                            ║");
+     System.out.println("                                                                ║ Left Exit                                                                                Right Exit  ║");
+     System.out.println("                                                                ║                                                                                                      ║");
+     
      int count = 0;
+     
      System.out.print("                                                                ║ ");
      for (Map.Entry<String, String> entry : Premiumstatus.entrySet()) {
          String seatCode = entry.getKey();
          String seatBlock = entry.getValue();
+         switch(count) {
+         case 0:
+        	 System.out.print("R1   ");
+        	 break;
+         case 10:
+        	 System.out.print(" R2   ");
+        	 break;
+         case 20:
+        	 System.out.print(" R3   ");
+        	 break;
+         case 30:
+        	 System.out.print(" R4   ");
+        	 break;
+         case 40:
+        	 System.out.print(" R5   ");
+        	 break;
+   
+         }
 
          // Pad to make it look aligned, e.g., "A1P ██"
          System.out.printf("%-6s", seatCode + " " + seatBlock+" ");
          count++;
 
          if (count % 10 == 0) {
+        	 
              System.out.println("                                                               ║");
              if (count < 50) System.out.print("                                                                ║");
          }
