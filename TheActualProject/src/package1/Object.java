@@ -304,6 +304,8 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 		final String CYAN = "\u001B[36m";
 		 final String YELLOW = "\u001B[33m";
 		final String RESET = "\u001B[0m";
+        final String BOLD = "\u001B[1m";
+        final String GOLD = "\u001B[33m";
 				
 				int BookNum =0;
 				String CustomerName;
@@ -315,22 +317,33 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				
 				try  {
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Please enter how many tickets will be booked");
-						System.out.print("                                                                                                        " );
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+						System.out.println("										          Please enter how many tickets will be booked?"+RESET);
+						System.out.println("											 	      Example: 3 ");
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
 						BookNum = s.nextInt();
+						System.out.println("");
 						s.nextLine();
 						if(BookNum>0) {
 							break;
 						}
 					}
-					System.out.print("                                                                                                        " );
-				System.out.println("enter cancel to back");
+					System.out.println();
+					//System.out.print("                                                                                                     ");
+					System.out.println("                                                                                                   ---------------------");
+					System.out.print("                                                                                                   " );
+				System.out.println("|Type " +RED+BOLD+ "CANCEL "+NON+"TO STOP|");
+				//System.out.print("" );
+				System.out.println("                                                                                                   ---------------------");
 					
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Enter Name:");
-						System.out.print("                                                                                                        " );
+					
+						System.out.print("                                                                                                        " );                                                                                     
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Enter Name: "+NON);
 						CustomerName=s.nextLine();
 						if (isValidName(CustomerName)&&!CustomerName.equalsIgnoreCase("cancel")) {
 							break;
@@ -340,25 +353,41 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
+					System.out.println();
+					System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+					System.out.println(BOLD);
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Movie List");
+						System.out.println(BOLD + "        		 				   ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+						System.out.println(BOLD + "        		 				   │" + GOLD + "                                            MOVIE LIST!" + RESET + BOLD +"                                          │");
+						System.out.println(BOLD + "        		 				   └─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+
+						
 						for (int i = 0; i < Movies.size(); i++) {
 							System.out.print("                                                                                                        " );
-				            System.out.println((i + 1) + ". " + Movies.get(i)); // index + 1 for display
+				            System.out.println((i + 1) + ". " + Movies.get(i)); 
+				           
+				            
 				        }
-						
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+						System.out.println(BOLD);
 						System.out.print("                                                                                                        " );
+						
 								System.out.println("Enter movie choice ex: 1");
-								System.out.print("                                                                                                        " );
+								System.out.println();
+								System.out.print("                                                                                                        " );//here
+								System.out.print(CYAN+BOLD+"Choice: "+NON);
+								
 								int moviechoice = s.nextInt();
 								s.nextLine();
 								if(moviechoice==0) {
 									recurseStandard();
 								}
 								 MovieName = Movies.get(moviechoice-1);
+								 System.out.println();
 								 System.out.print("                                                                                                        " );
 								 System.out.println("Chosen movie: "+ MovieName);
+
 								break;
 						
 						
@@ -406,6 +435,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter Ticket ID ex:1234 ");
 						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
 						TicketID = s.nextLine();
 						if(isValidTicketID(TicketID)&&!TicketID.equalsIgnoreCase("cancel")) {
 							break;
@@ -415,14 +447,21 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
+					System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+					System.out.println();
+					System.out.println();
 					while(true) {
 						String codePattern = "A([1-9]|[1-4][0-9]|50)";
 					String fullPattern = "^(" + codePattern + "\\s?){" + BookNum + "}$";
+						Standardstatus();
 						System.out.print("                                                                                                        " );
 						System.out.println("If more than 1, use space ex: A1 A2 A3");
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter planned seat codes: ");
 						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
 						seatcodes = s.nextLine();
 						if(seatcodes.matches(fullPattern)&&!seatcodes.equalsIgnoreCase("cancel")) {
 							break;
@@ -441,6 +480,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 							System.out.print("                                                                                                        " );
 							System.out.println("Enter payment");
 							System.out.print("                                                                                                        " );
+							System.out.println();
+							System.out.print("                                                                                                        " );//here
+							System.out.print(CYAN+BOLD+"Payment: "+NON);
 							int payment = s.nextInt();
 							s.nextLine();
 							if(payment ==total) {
@@ -539,9 +581,20 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 			 	
 	 static void premresult(String id,int num, int reg) {
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
+	       
+		 
+		 
 		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
 		 System.out.println("                                                                     ║                                      PREMIUM TICKETS                                   ║");
 		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
+		 System.out.println();
+			System.out.println(CYAN+BOLD+"        		 								    ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
 		int stopper = reg-num;
 		for (int  it=premiumBookings.size()-1 ;it>=0 && num>0;it--) {
 			String str = premiumBookings.get(it);
@@ -550,15 +603,29 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				String Plit = str.replaceAll(",", "                                                                                                        ");
         		System.out.println(Plit);
         		num--;
+        		System.out.println();
+				System.out.println(CYAN+BOLD+"        		 								   ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+        		System.out.println();
         		System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
+        		System.out.println();
+        		System.out.println();
+        		
 			}
 			
 		}
 	 }
 	 static void stanresult(String id,int num, int reg) {
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
 		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
 		 System.out.println("                                                                     ║                                     STANDARD TICKETS                                   ║");
 		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
+		 System.out.println();
+			System.out.println(CYAN+BOLD+"        		 								    ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
 		int stopper = reg-num;
 		for (int  it=bookings.size()-1 ;it>=0 && num>0;it--) {
 			String str = bookings.get(it);
@@ -567,7 +634,11 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				String Plit = str.replaceAll(",", "                                                                                                        ");
         		System.out.println(Plit);
         		num--;
+        		 System.out.println();
+     			System.out.println(CYAN+BOLD+"        		 								    ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
         		System.out.println("                                                                     ══════════════════════════════════════════════════════════════════════════════════════════");
+        		System.out.println();
+        		System.out.println();
 			}
 			
 		}
@@ -575,7 +646,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	public void curatePremiumTicket(String id,int num, int reg) {
 
 		 System.out.println("                                                                     ╔════════════════════════════════════════════════════════════════════════════════════════╗");
-		 System.out.println("                                                                     ║                              CURATED PREMIUM TICKETS                                  ║");
+		 System.out.println("                                                                     ║                              CURATED PREMIUM TICKETS                                   ║");
 		 System.out.println("                                                                     ╠════════════════════════════════════════════════════════════════════════════════════════╣");
 		int stopper = reg-num;
 		for (int  it=premiumBookings.size()-1 ;it>=0 && num>0;it--) {
@@ -635,9 +706,15 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	
 	
 	public void premiumMultiBook() {
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
+		
 		Path fp = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
-		final String RED = "\u001B[31m";
-		final String CYAN = "\u001B[36m";
+		
 		 final String YELLOW = "\u001B[33m";
 		final String RESET = "\u001B[0m";
 				
@@ -651,22 +728,35 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				
 				try  {
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Please enter how many tickets will be booked");
-						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+						System.out.println();
+						System.out.println();
+						System.out.println("										          Please enter how many tickets will be booked?"+RESET);
+						System.out.println("											 	          Example: 3 ");
+						System.out.println();
+						System.out.print("                                                                                                           " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
+						
 						BookNum = s.nextInt();
 						s.nextLine();
 						if(BookNum>0) {
 							break;
 						}
 					}
-					System.out.print("                                                                                                        " );
-				System.out.println("enter cancel to back");
+					System.out.println();
+					System.out.println("                                                                                                   ---------------------");
+					System.out.print("                                                                                                   " );
+				System.out.println("|Type " +RED+BOLD+ "CANCEL "+NON+"TO STOP|");
+				//System.out.print("" );
+				System.out.println("                                                                                                   ---------------------");
+					
 					
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Enter Name:");
-						System.out.print("                                                                                                        " );
+						                                                                                  
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+" Enter Name: "+NON);
 						CustomerName=s.nextLine();
 						if (isValidName(CustomerName)&&!CustomerName.equalsIgnoreCase("cancel")) {
 							break;
@@ -677,13 +767,28 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.println("Wrong format. Try again.");
 					}
 					while(true) {
-						System.out.print("                                                                                                        " );
-						System.out.println("Movie List");
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+						System.out.println();
+						System.out.println();
+						System.out.println(BOLD + "                                                                                               ╔══════════════════════════════╗");
+						System.out.println(BOLD + "                                                                                               ║" + GOLD + "          MOVIE LIST!         " + RESET + BOLD + "║");
+						System.out.println(BOLD + "                                                                                               ╚══════════════════════════════╝");
+						System.out.println();
+						System.out.println();
+			            System.out.println();
+			            
+			            
 						for (int i = 0; i < Movies.size(); i++) {
 							System.out.print("                                                                                                        " );
 				            System.out.println((i + 1) + ". " + Movies.get(i)); // index + 1 for display
+
+
 				        }
-						
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+						System.out.println(BOLD);
+						System.out.print("                                                                                                        " );
 						
 						
 						
@@ -695,19 +800,28 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						
 						
 						
-						
-						
-				System.out.print("                                                                                                        " );
+
+
+						System.out.println();
+				System.out.print("                                                                                                      " );
 						System.out.println("Enter movie choice ex: 1");
 						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
 						int moviechoice = s.nextInt();
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
 						s.nextLine();
 						if(moviechoice==0) {
 							recursePremium();
 						}
 						 MovieName = Movies.get(moviechoice-1);
+						 System.out.println();
 						 System.out.print("                                                                                                        " );
-						 System.out.println("Chosen movie: "+ MovieName);
+						 System.out.println("Chosen movie: "+ DB + MovieName + NON);
+
+						 
 						break;
 						
 						/* System.out.print("                                                                                                        " );
@@ -738,7 +852,12 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter Ticket ID ex:1234 ");
 						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
 						TicketID = s.nextLine();
+						System.out.println();
+						
 						if(isValidTicketID(TicketID)&&!TicketID.equalsIgnoreCase("cancel")) {
 							break;
 						}else if(CustomerName.equalsIgnoreCase("cancel")) {
@@ -747,17 +866,23 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 						System.out.println("Wrong format. Try again.");
 					}
+					System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+					System.out.println();
+					System.out.println();
 					while(true) {
 						//("^A(?:[1-9]|[1-4][0-9]|50)P(?:\\s*\\s*A(?:[1-9]|[1-4][0-9]|50)P)*$");
 						//("A([1-9]|[1-4][0-9]|50)P{+count+}");
 						String codePattern = "A([1-9]|[1-4][0-9]|50)P";
 						String fullPattern = "^(" + codePattern + "\\s?){" + BookNum + "}$";
-						 
+						Premiumstatus();
 						System.out.print("                                                                                                        " );
 						System.out.println("if more than 1, use space ex: A1P A2P A3P");
 						System.out.print("                                                                                                        " );
 						System.out.println("Enter planned seat codes: ");
 						System.out.print("                                                                                                        " );
+						System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
 						seatcodes = s.nextLine();
 						if(seatcodes.matches(fullPattern)&&!seatcodes.equalsIgnoreCase("cancel")) {
 							break;
@@ -776,6 +901,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 							System.out.print("                                                                                                        " );
 							System.out.println("Enter payment");
 							System.out.print("                                                                                                        " );
+							System.out.println();
+							System.out.print("                                                                                                        " );//here
+							System.out.print(CYAN+BOLD+"Payment: "+NON);
 							int payment = s.nextInt();
 							s.nextLine();
 							if(payment ==total) {
@@ -830,7 +958,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 					
 						}catch(InputMismatchException e) {
 							System.out.print("                                                                                                        " );
-							System.out.println("Numbers only");
+							System.out.println("   Numbers only, going back to Premium Section");
 							
 							s.nextLine();
 						}
@@ -874,140 +1002,186 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 			 	
 
 	
-		public void StandardmultiCancel() {
-		int numtodel=0;
-		int bs = bookings.size() -1; 
-		while(true) {
-			try {
-				System.out.print("                                                                                                        " );	
-				System.out.println("Enter 0 to back");
-				System.out.print("                                                                                                        " );	
-				System.out.println("Enter number of bookings and seat reservations to cancel");
-				System.out.println();
-				System.out.print("                                                                                                        " );
-				 numtodel= s.nextInt();
-				 System.out.println();
-				 s.nextLine();
-				 if(numtodel>bs&& numtodel!=0) {
-						System.out.print("                                                                                                        " );
-					 System.out.println("Cannot cancel above number of total bookings");
-					 System.out.println();
-				 }else if(numtodel<=bs) {
-					 break;
-				 }else if(numtodel ==0) {
-					 recurseStandard();
-				 }
-			}catch(InputMismatchException e) {
-				System.out.print("                                                                                                        " );
-				System.out.println("Numbers only");
-				System.out.println();
-				s.nextLine();
-			}
-		}
-		
-		while(true) {
-			try {
-				
-					Path ip = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
-					
-					for(int i=0;i<numtodel;i++) {
-						
-						Standardstatus();
-						System.out.print("                                                                                                        " );
-							 System.out.println("Type the seat codes you have reserevd to cancel reservation");
-							 System.out.println();
-								System.out.print("                                                                                                        " );
-							String input = s.nextLine();
-							
-							 if (Standardseats.containsKey(input)&&isStandardSeatValid(input)&&	!Standardseats.get(input).equals("available")) {
-								 Standardseats.put(input,"available");
-								 Standardstatus.put(input, GREEN+"██"+NON  );
-									System.out.print("                                                                                                        " );
-								System.out.println(input+ "is now "+ Standardseats.get(input));
-								Standardstatus();
-							}else {
-								 i--;
-									System.out.print("                                                                                                        " );
-								 System.out.println("Follow the instructions!");
-						
-					}
-					}
-					System.out.print("                                                                                                        " );
-				System.out.println("Enter your ticket ID to cancel the bookings in your name");
-				System.out.print("                                                                                                        " );
-				 String target = s.nextLine();
-				 List<String> fs = new ArrayList<>();
-		//this might cause error some time soon
-				 for (int  it=bookings.size()-1 ;it>=0 && numtodel>0;it--) {
-					 String str = bookings.get(it);
-					 if(str.contains(target)) {
-						 bookings.remove(it);
-						 PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-						 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
-						 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-						writerB.print(bookings);
-						writerB.flush();
-						 numtodel--;
-						
-					 }
-				 }
-					System.out.print("                                                                                                        " );
-				 System.out.println("Enter number of cancelled bookings to refund");
-					System.out.print("                                                                                                        " );
-				 int multiplier = s.nextInt();
-				 int value = standardPricing;
-				 int targetvalue = value*multiplier;
-				 int refund; 
-				 int remains;
-				 for (int index = 0; index< standardPayments.size(); index++){
-					 int payment = standardPayments.get(index);
-				 if(payment>=targetvalue){
-				 remains = payment-targetvalue;
-				 refund=targetvalue;
-				 
-				 standardPayments.remove(index);
-				 standardPayments.add(remains);
-					System.out.print("                                                                                                        " );
-				 System.out.println("Refunded amount: "+refund);
-				 break;
-				 }	
-				 }
-				 PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardPayments.txt", true));
-				 pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardPayments.txt"));
-				 pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardPayments.txt", true));
-				 pw.print(standardPayments);
-					pw.flush();
-					System.out.print("                                                                                                        " );
-				 System.out.println("updated bookings");
-				 int regu = bookings.size();
-				 curateStandardTicket(target,multiplier,regu);
-				 //niggers
-				Recurse();
-				
-				
-				
-		           			 
-			
-					}
-					catch(IOException e) {
-				System.out.println("an error has occured");}
-			}
-			}
+	public void StandardmultiCancel() {
+		final String CYAN = "\u001B[96m";
+        final String BOLD = "\u001B[1m";
+        final String CLEAR = "\u001B[0m";
+        final String DB = "\u001B[34m";
+        final String RED = "\u001B[31m";
+        final String GOLD = "\u001B[33m";
+       int numtodel;
+       int bs = bookings.size();
+       String seatinput;
+       String target;
+       int multiplier;
+      //cm1
+       while (true) {
+       		try {
+       			System.out.println("Type fucking number of bookings you want to cancel");
+       			numtodel = s.nextInt();
+       			s.nextLine();
+       			if(numtodel<=bs&&numtodel !=0) {
+       				
+       				
+       				System.out.println("good boy");
+       				
+       				break;
+       			}
+       			else if (numtodel==0) {
+       				
+       				System.out.println("fuck you  stop trynna do the impossible");
+       				
+       			}
+       			else {
+       				
+       				
+       				System.out.println("fuck you  stop trynna do the impossible");
+       				
+       				
+       			}
+       		}catch(InputMismatchException e){
+       			System.out.println("fuck you stop trynna do the impossible");
+       			System.out.println("Type fucking number of bookings you want to cancel");
+       			s.nextLine();
+       		}
+       	}
+       //cm2
+       while(true) {
+    	   try {
+    		   for(int i=0; i<numtodel;) {
+    			   Standardstatus();
+    			   System.out.println("Type the seat codes you have reserevd to cancel reservation ex: A1");
+    			   seatinput = s.nextLine();
+    			   if(isStandardSeatValid(seatinput)&&Standardseats.containsKey(seatinput)&&!Standardseats.get(seatinput).equals("available")) {
+    				   Standardseats.put(seatinput,"available");
+    				   Standardstatus.put(seatinput, GREEN+"██"+NON  );
+    				   System.out.println(seatinput+ "is now "+ Standardseats.get(seatinput));
+    				   Standardstatus();
+    				   i++;
+    				   
+    			   }else {
+    				   
+    				   System.out.println("JUST FOLLOW THE DAMN INSTRUCTIONS BRO");
+    			   }
+    			  
+    		   }
+    		   
+    		   break;
+    		   
+    	   }catch(InputMismatchException e){
+      			System.out.println("fuck you stop trynna do the impossible");
+      			System.out.println("Type fucking number of bookings you want to cancel");
+      			s.nextLine();
+      		}
+       }
+      //cm3
+       while(true) {
+    	   try {
+    		   boolean found= false;
+    		   System.out.println("Enter your ticket ID to cancel the bookings in your name ex: 1234");
+    		   target = s.nextLine();
+    		   for(String s: bookings) {
+    			   if (s.contains(target)) {
+    				   found=true;
+    				   break;
+    			   }
+    		   }
+    		   if(found&& isValidTicketID(target)) {
+    			   int removed =0;
+    			   for (int i = bookings.size() - 1; i >= 0 && removed < numtodel; i--) {
+    	                String str = bookings.get(i);
+    	                if (str.contains(target)) {
+    	                    bookings.remove(i);
+    	                    removed++;
+    	                    PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
+							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+							writerB.print(bookings);
+							writerB.flush();
+    	                }
+    	            }
+    		   }else {
+    			   System.out.println("Invalid ticket ID");
+    			   System.out.println("Try again");
+    		   }
+    		   
+    		  /* if(bookings.contains(target)&&isValidTicketID(target)) {
+    			   for(int i=bookings.size(); i>=0&& numtodel>0; i-- ) {
+    				   String str = bookings.get(i);
+    				   if(str.contains(target)) {
+							 bookings.remove(i);
+							 PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
+							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+							writerB.print(bookings);
+							writerB.flush();
+							 numtodel--;
+							 }
+    			   }
+    		   }
+    		   */
+    		   
+    		   break;
+    	   }catch(InputMismatchException e) {
+    		   System.out.println("fuck you stop trynna do the impossible");
+    			System.out.println("Type fucking number of bookings you want to cancel");
+    			s.nextLine();
+    	   }catch(IOException e) {
+    		   
+    	   }
+       }
+       //cm4
+      while(true) {
+    	  int value = standardPricing;
+          int cost = value*numtodel;
+          int payment;
+          int refund;
+          int remains;
+          int panukli;
+          int overpayment;
+          
+          try {
+        	 System.out.println("refunded amount: "+cost);
+        	 System.out.println("updated bookings");
+    		 int regu = bookings.size();
+    		 multiplier = bookings.size();
+    		 curateStandardTicket(target,multiplier,regu);
+    		
+    		break;
+          }catch(InputMismatchException e) {
+        	  System.out.println("fuck you stop trynna do the impossible");
+          }
+          }
 
-		
-	
+		 
+      Recurse();  
+	}
+
 	public void PremiummultiCancel() {
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
+		
 		int numtodel=0;
-		int bs = premiumBookings.size() -1; 
+		int bs = premiumBookings.size(); 
 		while(true) {
 			try {
-				System.out.print("                                                                                                        " );
-				System.out.println("Enter 0 to back");
-				System.out.print("                                                                                                        " );
-				System.out.println("Enter number of bookings and seat reservations to cancel");
-				System.out.print("                                                                                                        " );
+				System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+				System.out.println();
+				System.out.print("                                                                                                     " );
+				System.out.println("   Enter" + RED +" 0 " + NON+ "to back.");
+				System.out.print("                                                                                  " );
+				System.out.println("Enter the" +BOLD+ CYAN + " Number " + NON + "of Booking and Sear Reservation to" + RED+" remove."+NON);
+				System.out.print("                                                                                            " );
+				System.out.println();
+				System.out.print("                                                                                                           " );//here
+				System.out.print(CYAN+BOLD+"Choice: "+NON);
 				 numtodel= s.nextInt();
-				 s.nextLine();
+				 
+				 System.out.println();
 				 if(numtodel>bs&&numtodel!=0) {
 					 System.out.print("                                                                                                        " );
 					 System.out.println("Cannot cancel above number of total bookings");
@@ -1035,6 +1209,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						System.out.print("                                                                                                        " );
 							 System.out.println("Enter your seat name or code to cancel reservation");
 							 System.out.print("                                                                                                        " );
+								System.out.println();
+								System.out.print("                                                                                                        " );//here
+								System.out.print(CYAN+BOLD+"Choice: "+NON);
 							String input = s.nextLine();
 							 if (Premiumseats.containsKey(input)&&isPremiumSeatValid(input)&&	!Premiumseats.get(input).equals("available")) {
 								 Premiumseats.put(input,"available");
@@ -1055,6 +1232,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 					System.out.print("                                                                                                        " );
 				System.out.println("Enter your ticket ID to cancel all the bookings in your name");
 				System.out.print("                                                                                                        " );
+				System.out.println();
+				System.out.print("                                                                                                        " );//here
+				System.out.print(CYAN+BOLD+"Choice: "+NON);
 				 String target = s.nextLine();
 				 List<String> fs = new ArrayList<>();
 				 for (int  i=premiumBookings.size()-1 ;i>=0 && numtodel>0;i--) {
@@ -1073,6 +1253,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 				 System.out.print("                                                                                                        " );
 				 System.out.println("Enter number of cancelled bookings to refund");
 				 System.out.print("                                                                                                        " );
+					System.out.println();
+					System.out.print("                                                                                                        " );//here
+					System.out.print(CYAN+BOLD+"Choice: "+NON);
 				 int multiplier = s.nextInt();
 				 int value = premiumPricing;
 				 int targetvalue = value*multiplier;
@@ -1160,40 +1343,62 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	@Override
 	
 	public void StandardmultiSeatRes() {
-		System.out.print("                                                                                          " );
-		System.out.println("Welcome this is seat reservation section.");
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
+	        System.out.print("                                                                                          " );
+			System.out.println("  Welcome this is seat reservation section.");
 		
 		int nameMatchCount=0;
 		System.out.print("                                                                                             " );
 		System.out.println("Enter your ticket ID for verification");
 		System.out.print("                                                                                                        " );
+		System.out.println();
+		System.out.print("                                                                                                        " );//here
+		System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
 		 String target = s.nextLine();
 		
 		 List<String> fs = new ArrayList<>();
-		 for (int  i=0;i<bookings.size();i++) {
-			 String str = bookings.get(i);
-			 if(str.contains(target)) {
-				 bookings.get(i);
-				 nameMatchCount++;
-			 }else {
-				 StandardmultiSeatRes(); 
-			 }
+		 //int  i=0;i<bookings.size();i++
+			 for (String i:bookings) {
+				 if(i.contains(target)) {
+					 nameMatchCount++;
+				 }else{
+					 StandardmultiSeatRes();
+				 }
+			// String str = bookings.get(i);
+			 //if(str.contains(target)) {
+				// bookings.get(i);
+				// nameMatchCount++;
+			// }else {
+			//	 StandardmultiSeatRes(); 
+			// }
 		 }
 		 if (nameMatchCount > 0) {
 			 for(int i1=0; i1<nameMatchCount;i1++) {
 				 while(true) {
 						try {
-							System.out.print("                                                                                                        " );
-							System.out.println("Enter cancel to back");
-							System.out.print("                                                                                                        " );
+							System.out.println();
+							System.out.println("                                                                                                   ---------------------");
+							System.out.print("                                                                                                   " );
+						System.out.println("|Type " +RED+BOLD+ "CANCEL "+NON+"TO STOP|");
+						//System.out.print("" );
+						System.out.println("                                                                                                   ---------------------");	
+						System.out.print("                                                                                           " );
 							System.out.println("Green means avialable and red means occupied");
 							
 							Standardstatus();
-							System.out.print("                                                                                                        " );
-							System.out.println("Please enter seat ID to proceed with seat reservation(A1-A50)");
-							
-							System.out.print("                                                                                                        " );
+							System.out.print("                                                                               " );
+							System.out.println("Please enter seat ID to proceed with seat reservation(A1P-A50P)");
+						
+							System.out.println();
+							System.out.print("                                                                                                        " );//here
+							System.out.print(CYAN+BOLD+"Seat code: "+NON);
 							String choice = s.nextLine();
+							System.out.println();
 							 if (Standardseats.get(choice).equals("Reserved")) {  
 								 System.out.print("                                                                                                        " );
 							        System.out.println("Sorry, the seat " + choice + " is already reserved.");
@@ -1202,7 +1407,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 							        
 							    }
 							if (Standardseats.containsKey(choice)&& !Standardseats.get(choice).equals("Reserved") && isStandardSeatValid(choice)) {
-								System.out.print("                                                                                                        " );
+								System.out.print("                                                                                              " );
 								System.out.println("Successfully registered. your seat is "+ choice);
 								Standardseats.put(choice, "Reserved");
 								Standardstatus.put(choice, RED + "██" + NON);
@@ -1213,7 +1418,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 						}
 						catch(NullPointerException e) {
 							System.out.print("                                                                                                        " );
-							System.out.println("Upto A12 only. Try again");
+							System.out.println("Upto A50 only. Try again");
 						}
 					}
 			}
@@ -1226,39 +1431,63 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 	@Override
 	
 	public void PremiummultiSeatRes() {
+		 final String CYAN = "\u001B[96m";
+	        final String BOLD = "\u001B[1m";
+	        final String CLEAR = "\u001B[0m";
+	        final String DB = "\u001B[34m";
+	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
 		System.out.print("                                                                                          " );
-		System.out.println("Welcome this is seat reservation section.");
+		System.out.println("  Welcome this is seat reservation section.");
 		
 		int nameMatchCount=0;
 		System.out.print("                                                                                             " );
 		System.out.println("Enter your ticket ID for verification");
 		System.out.print("                                                                                                        " );
+		System.out.println();
+		System.out.print("                                                                                                        " );//here
+		System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
 		 String target = s.nextLine();
 		
 		 List<String> fs = new ArrayList<>();
-		 for (int  i=0;i<premiumBookings.size();i++) {
-			 String str = premiumBookings.get(i);
-			 if(str.contains(target)) {
-				 premiumBookings.get(i);
+		 for (String i:premiumBookings) {
+			 if(i.contains(target)) {
 				 nameMatchCount++;
-			 }else {
+			 }else{
 				 PremiummultiSeatRes();
 			 }
+		 
+		 //for (int  i=0;i<premiumBookings.size();i++) {
+			// String str = premiumBookings.get(i);
+			 //if(str.contains(target)) {
+				// premiumBookings.get(i);
+				// nameMatchCount++;
+		//	 }else {
+			//	 PremiummultiSeatRes();
+			// }
 		 }
 		 if (nameMatchCount > 0) {
 			 						
 			 for(int i1=0; i1<nameMatchCount;i1++) {
 				 while(true) {
 						try {
-							System.out.print("                                                                                                        " );
-							System.out.println("Enter cancel to back");
-							System.out.print("                                                                                                        " );
+							System.out.println();
+							System.out.println("                                                                                                   ---------------------");
+							System.out.print("                                                                                                   " );
+						System.out.println("|Type " +RED+BOLD+ "CANCEL "+NON+"TO STOP|");
+						//System.out.print("" );
+						System.out.println("                                                                                                   ---------------------");
+							System.out.print("                                                                                           " );
 							System.out.println("Green means avialable and red means occupied");
 							Premiumstatus();
-							System.out.print("                                                                                                        " );
-							System.out.println("Please enter seat ID to proceed with seat reservation(A1-A12)");
-							System.out.print("                                                                                                        " );
+							System.out.print("                                                                               " );
+							System.out.println("Please enter seat ID to proceed with seat reservation(A1P-A50P)");
+						
+							System.out.println();
+							System.out.print("                                                                                                        " );//here
+							System.out.print(CYAN+BOLD+"Seat code: "+NON);
 							String choice = s.nextLine();
+							System.out.println();
 							 if (Premiumseats.get(choice).equals("Reserved")) {  
 								 System.out.print("                                                                                                        " );
 							        System.out.println("Sorry, the seat " + choice + " is already reserved.");
@@ -1267,7 +1496,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 							        
 							    }
 							if (Premiumseats.containsKey(choice)&& !Premiumseats.get(choice).equals("Reserved") && isPremiumSeatValid(choice)) {
-								System.out.print("                                                                                                        " );
+								System.out.print("                                                                                              " );
 								System.out.println("Successfully registered. your seat is "+ choice);
 								
 								Premiumseats.put(choice, "Reserved");
@@ -1449,25 +1678,33 @@ System.out.println("");
 	        final String CLEAR = "\u001B[0m";
 	        final String DB = "\u001B[34m";
 	        final String RED = "\u001B[31m";
+	        final String GOLD = "\u001B[33m";
+	        System.out.println("        		 			─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
+	        System.out.println(GOLD+"										 		 	 	 G O O D  D A Y!" + NON);
+	        System.out.println("        		 			 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ");
 	        System.out.println();
 	        System.out.println(CYAN+"""
-	        		     		     		     		     	███████╗██╗██╗     ███╗   ███╗██╗  ██╗ ██████╗ ██╗   ██╗███████╗███████╗
-	        		     		     		     		     	██╔════╝██║██║     ████╗ ████║██║  ██║██╔═══██╗██║   ██║██╔════╝██╔════╝
-	        		     		     		     		     	█████╗  ██║██║     ██╔████╔██║███████║██║   ██║██║   ██║███████╗█████╗ 
-	        		     		     		     		     	██╔══╝  ██║██║     ██║╚██╔╝██║██╔══██║██║   ██║██║   ██║╚════██║██╔══╝  
-	        		     		     		     		     	██║     ██║███████╗██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╔╝███████║███████╗ 
-	        		     		     		     		     	╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
+	        		     		     		     		     	 ███████╗██╗██╗     ███╗   ███╗██╗  ██╗ ██████╗ ██╗   ██╗███████╗███████╗
+	        		     		     		     		     	 ██╔════╝██║██║     ████╗ ████║██║  ██║██╔═══██╗██║   ██║██╔════╝██╔════╝
+	        		     		     		     		     	 █████╗  ██║██║     ██╔████╔██║███████║██║   ██║██║   ██║███████╗█████╗ 
+	        		     		     		     		     	 ██╔══╝  ██║██║     ██║╚██╔╝██║██╔══██║██║   ██║██║   ██║╚════██║██╔══╝  
+	        		     		     		     		     	 ██║     ██║███████╗██║ ╚═╝ ██║██║  ██║╚██████╔╝╚██████╔╝███████║███████╗ 
+	        		     		     		     		     	 ╚═╝     ╚═╝╚══════╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚══════╝
 	   """+ NON);
-	        System.out.println("        		 			 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+	        System.out.println("        		 			 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ");
 	        System.out.println(BOLD+"										 		 	 	 W E L C O M E!" + NON);
-	        System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+	        System.out.println("        		 			─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────");
+			System.out.println();	
+			System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
 			System.out.println();
 			System.out.println(BOLD+"													 Please select mode of booking");
 			System.out.println();
 			System.out.println(BOLD + "														1. Premium");
 			System.out.println("													2. Standard");
 			System.out.println(RED +"														3. Exit" + CLEAR );
+			System.out.println();
 			System.out.print("                                                                                                        " );//here
+			System.out.print(CYAN+BOLD+"Choice: "+NON);
 			int input = s.nextInt();
 			s.nextLine();
 			if (input == 1) {
@@ -1497,20 +1734,27 @@ System.out.println("");
 				        final String CLEAR = "\u001B[0m";
 				        final String DB = "\u001B[34m";
 				        final String RED = "\u001B[31m";
-		System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-		System.out.println(BOLD+"										 		 	 	STANDARD SECTION" + NON);
-		System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
-		System.out.println();
-				Object std = new Object();
-		System.out.println(BOLD+"													   Type the Number to select");
-		System.out.println();
-		System.out.println(BOLD+RED+"														0 Back"+CLEAR);
-		System.out.println(BOLD+"														1 Ticket Booking");
-		System.out.println("													2 Show Ticket");
-		System.out.println("													3 Cancellation");
-		System.out.println("													4 Receipt");
-					
-		System.out.print("                                                                                                        " );//for inputs
+				        Object std = new Object();
+						System.out.println();
+						System.out.println();
+						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+				        System.out.println(BOLD);
+				        System.out.println(BOLD);
+				        System.out.println("        		 				   ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗");
+				        System.out.println(BOLD +         "        		                                   ║                                          STANDARD SECTION                                       ║" + NON);
+				        System.out.println("        		 				   ╠═════════════════════════════════════════════════════════════════════════════════════════════════╣");
+				        System.out.println(BOLD +         "        		                                   ║                                           ENTER A NUMBER                                        ║" + NON);
+				        System.out.println("        		 				   ║                                                                                                 ║");
+				        System.out.println(BOLD +   "                                                           ║"+ RED +"                                              0 Back" + NON+"                                             ║" + NON);
+				        System.out.println(BOLD +         "                                                           ║			           1 Ticket Booking     3 Cancellation                               ║");
+				        System.out.println("        		 				   ║			           2 Show Ticket        4 Receipt                                    ║");
+				        System.out.println("        		 				   ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
+				        System.out.print("                                                                                                        " + NON);
+				        System.out.println();
+						System.out.print("                                                                                                        " );//here
+						System.out.print(CYAN+BOLD+"Choice: "+NON);
+
+//for inputs
 				int input = s.nextInt();
 				s.nextLine();
 				if(input ==0) {
@@ -1537,7 +1781,7 @@ System.out.println("");
 	//all admin features
 	public void adminLogin() {
 		String password;
-		System.out.print("                                                                                                        " );
+		
 		System.out.println("Enter password");
 		System.out.print("                                                                                                        " );
 		password=s.nextLine();
@@ -1668,20 +1912,26 @@ System.out.println("");
 		        final String DB = "\u001B[34m";
 		        final String RED = "\u001B[31m";
 		        final String YL = "\u001B[33m";
-				System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
-				System.out.println(BOLD+YL+"										 		 	 	PREMIUM SECTION" + NON+CLEAR);
-				System.out.println("        		 			- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ");
+				Object prm = new Object();
 				System.out.println();
-			Object prm = new Object();
-				System.out.println(BOLD+"													   Type the Number to select");
 				System.out.println();
-				System.out.println(BOLD+RED+"														0 Back"+CLEAR);
-				System.out.println(BOLD+"														1 Ticket Booking");
-				System.out.println("													2 Show Ticket");
-				System.out.println("													3 Cancellation");
-				System.out.println("													4 receipt");
-				
+				System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+				System.out.println(BOLD);
+				System.out.println(BOLD);
+				System.out.println("        		                                                            ╔════════════════════════════════════════════════════╗");
+				System.out.println(BOLD + "        		                                                            ║                  PREMIUM SECTION                   ║" + NON);
+				System.out.println("        		 				                            ╠════════════════════════════════════════════════════╣");
+				System.out.println(BOLD + "        		                                                            ║                   ENTER A NUMBER                   ║" + NON);
+				System.out.println("        		 				                            ║                                                    ║");
+				System.out.println(BOLD + "                                                                                    ║" + RED + "                         0 Back    " + NON + "                 ║");
+				System.out.println(BOLD + "                                                                                    ║        1 Ticket Booking        3 Cancellation      ║");
+				System.out.println("        		 				                            ║        2 Show Ticket           4 Receipt           ║");
+				System.out.println("        		 				                            ╚════════════════════════════════════════════════════╝");
+				System.out.println();
+			
 				System.out.print("                                                                                                        " );
+				System.out.print(CYAN+BOLD+"Choice: "+NON);
+				
 				int input = s.nextInt();
 				s.nextLine();
 				if(input ==0) {
@@ -1740,7 +1990,7 @@ System.out.println("");
 	}
 	public void standardShowTicket() {
 		while (true) {
-			
+			int nameMatchCount = 0;
 			System.out.print("                                                                                                        " );
 			System.out.println("Welcome! this is the premium ticket viewing section.");
 					
@@ -1748,7 +1998,36 @@ System.out.println("");
 					System.out.println("Enter your ticket ID to identify which ticket to show");
 					System.out.print("                                                                                                        " );
 					 String target = s.nextLine();
-					 if(bookings.contains(target)) {
+					 
+					
+					 int matchCount = 0;
+					 int regu = bookings.size();
+
+					 for (String entry : bookings) {
+					     if (entry.contains("Ticket ID: " + target)) {
+					         curateStandardTicket(entry, matchCount + 1, regu);
+					         matchCount++;
+					     }
+					 }
+
+					 if (matchCount == 0) {
+					     System.out.println("Invalid ticket ID.");
+					     recurseStandard();
+					 }
+					 
+					/*for (int  i=0;i<bookings.size();i++) {
+						 String str = bookings.get(i);
+						 if(str.contains(target)) {
+							 bookings.get(i);
+							 nameMatchCount++;
+							 int regu = bookings.size();
+							 curateStandardTicket(target, nameMatchCount,regu );
+							 
+						 }else {
+							 StandardmultiSeatRes(); 
+						 }
+					 }*/
+					 /*if(bookings.contains(target)) {
 						 System.out.print("                                                                                                        " );
 						 System.out.println("Enter how many tickets you wanna see");
 						 System.out.print("                                                                                                        " );
@@ -1756,16 +2035,16 @@ System.out.println("");
 						 s.nextLine();
 						 int regu = bookings.size();
 						 curateStandardTicket(target, count,regu );
-					 }else {
+					 }else if (!bookings.contains(target)){
 						 System.out.print("                                                                                                        " );
 						 System.out.println("Invalid ticket ID");
-						 
+						 System.out.println(bookings);
 						 recurseStandard();
-					 }
+					 }*/
 					 
 					
 
-		
+		recurseStandard();
 	}
 				
 	}
@@ -1779,7 +2058,21 @@ System.out.println("");
 						System.out.println("Enter the ticket ID to identify which ticket to show");
 						System.out.print("                                                                                                        " );
 						 String target = s.nextLine();
-						 if(premiumBookings.contains(target)) {
+						 int matchCount = 0;
+						 int regu = premiumBookings.size();
+
+						 for (String entry : premiumBookings) {
+						     if (entry.contains("Ticket ID: " + target)) {
+						         curatePremiumTicket(entry, matchCount + 1, regu);
+						         matchCount++;
+						     }
+						 }
+
+						 if (matchCount == 0) {
+						     System.out.println("Invalid ticket ID.");
+						     recursePremium();
+						 }
+						 /*if(premiumBookings.contains(target)) {
 							 System.out.print("                                                                                                        " );
 							 System.out.println("Enter how many tickets you wanna see");
 							 System.out.print("                                                                                                        " );
@@ -1787,12 +2080,12 @@ System.out.println("");
 							 s.nextLine();
 							 int regu = premiumBookings.size();
 							 curatePremiumTicket(target, count,regu );
-						 }else {
+						 }else if(!premiumBookings.contains(target)){
 							 System.out.print("                                                                                                        " );
 							 System.out.println("Invalid ticket ID");
 							
 							recursePremium();
-						 }
+						 }*/
 						 
 						
 
