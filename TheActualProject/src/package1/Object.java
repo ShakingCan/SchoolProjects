@@ -1003,307 +1003,648 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 	
 	public void StandardmultiCancel() {
+
 		final String CYAN = "\u001B[96m";
-        final String BOLD = "\u001B[1m";
-        final String CLEAR = "\u001B[0m";
-        final String DB = "\u001B[34m";
-        final String RED = "\u001B[31m";
-        final String GOLD = "\u001B[33m";
-       int numtodel;
-       int bs = bookings.size();
-       String seatinput;
-       String target;
-       int multiplier;
-      //cm1
-       while (true) {
-       		try {
-       			System.out.println("Type fucking number of bookings you want to cancel");
-       			numtodel = s.nextInt();
-       			s.nextLine();
-       			if(numtodel<=bs&&numtodel !=0) {
-       				
-       				
-       				System.out.println("good boy");
-       				
-       				break;
-       			}
-       			else if (numtodel==0) {
-       				
-       				System.out.println("fuck you  stop trynna do the impossible");
-       				
-       			}
-       			else {
-       				
-       				
-       				System.out.println("fuck you  stop trynna do the impossible");
-       				
-       				
-       			}
-       		}catch(InputMismatchException e){
-       			System.out.println("fuck you stop trynna do the impossible");
-       			System.out.println("Type fucking number of bookings you want to cancel");
-       			s.nextLine();
-       		}
-       	}
-       //cm2
-       while(true) {
-    	   try {
-    		   for(int i=0; i<numtodel;) {
-    			   Standardstatus();
-    			   System.out.println("Type the seat codes you have reserevd to cancel reservation ex: A1");
-    			   seatinput = s.nextLine();
-    			   if(isStandardSeatValid(seatinput)&&Standardseats.containsKey(seatinput)&&!Standardseats.get(seatinput).equals("available")) {
-    				   Standardseats.put(seatinput,"available");
-    				   Standardstatus.put(seatinput, GREEN+"██"+NON  );
-    				   System.out.println(seatinput+ "is now "+ Standardseats.get(seatinput));
-    				   Standardstatus();
-    				   i++;
-    				   
-    			   }else {
-    				   
-    				   System.out.println("JUST FOLLOW THE DAMN INSTRUCTIONS BRO");
-    			   }
-    			  
-    		   }
-    		   
-    		   break;
-    		   
-    	   }catch(InputMismatchException e){
-      			System.out.println("fuck you stop trynna do the impossible");
-      			System.out.println("Type fucking number of bookings you want to cancel");
-      			s.nextLine();
-      		}
-       }
-      //cm3
-       while(true) {
-    	   try {
-    		   boolean found= false;
-    		   System.out.println("Enter your ticket ID to cancel the bookings in your name ex: 1234");
-    		   target = s.nextLine();
-    		   for(String s: bookings) {
-    			   if (s.contains(target)) {
-    				   found=true;
-    				   break;
-    			   }
-    		   }
-    		   if(found&& isValidTicketID(target)) {
-    			   int removed =0;
-    			   for (int i = bookings.size() - 1; i >= 0 && removed < numtodel; i--) {
-    	                String str = bookings.get(i);
-    	                if (str.contains(target)) {
-    	                    bookings.remove(i);
-    	                    removed++;
-    	                    PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
-							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-							writerB.print(bookings);
-							writerB.flush();
-    	                }
-    	            }
-    		   }else {
-    			   System.out.println("Invalid ticket ID");
-    			   System.out.println("Try again");
-    		   }
-    		   
-    		  /* if(bookings.contains(target)&&isValidTicketID(target)) {
-    			   for(int i=bookings.size(); i>=0&& numtodel>0; i-- ) {
-    				   String str = bookings.get(i);
-    				   if(str.contains(target)) {
-							 bookings.remove(i);
-							 PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
-							 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
-							writerB.print(bookings);
-							writerB.flush();
-							 numtodel--;
-							 }
-    			   }
-    		   }
-    		   */
-    		   
-    		   break;
-    	   }catch(InputMismatchException e) {
-    		   System.out.println("fuck you stop trynna do the impossible");
-    			System.out.println("Type fucking number of bookings you want to cancel");
-    			s.nextLine();
-    	   }catch(IOException e) {
-    		   
-    	   }
-       }
-       //cm4
-      while(true) {
-    	  int value = standardPricing;
-          int cost = value*numtodel;
-          int payment;
-          int refund;
-          int remains;
-          int panukli;
-          int overpayment;
-          
-          try {
-        	 System.out.println("refunded amount: "+cost);
-        	 System.out.println("updated bookings");
-    		 int regu = bookings.size();
-    		 multiplier = bookings.size();
-    		 curateStandardTicket(target,multiplier,regu);
-    		
-    		break;
-          }catch(InputMismatchException e) {
-        	  System.out.println("fuck you stop trynna do the impossible");
-          }
-          }
+
+		final String BOLD = "\u001B[1m";
+
+		final String CLEAR = "\u001B[0m";
+
+		final String DB = "\u001B[34m";
+
+		final String RED = "\u001B[31m";
+
+		final String GOLD = "\u001B[33m";
+
+		final String RESET = "\u001B[0m";
+
+		int numtodel;
+
+		int bs = bookings.size();
+
+		String seatinput;
+
+		String target;
+
+		int multiplier;
+
+		System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+
+		System.out.println(BOLD + "        		 				   ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+		System.out.println(BOLD + "        		 				   │" + GOLD + "                                STANDARD BOOKING CANCELLING SECTION!" + RESET + BOLD +"                             │");
+		System.out.println(BOLD + "        		 				   └─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+
+
+		//cm1
+
+		while (true) {
+
+		try {
+
+		System.out.print("                                                                                                        " );//here
+
+		System.out.println("Enter number of bookings to cancel");
+
+		System.out.println();
+
+		System.out.print("                                                                                                        " );//here
+
+		System.out.print(CYAN+BOLD+"Choice: "+NON);
+
+		numtodel = s.nextInt();
+
+		s.nextLine();
+
+		if(numtodel<=bs&&numtodel !=0) {
+
+		System.out.println("                                                                                                    Proceeding now...");
+
+		break;
+
+		}
+
+		else if (numtodel==0) {
 
 		 
-      Recurse();  
-	}
 
-	public void PremiummultiCancel() {
-		 final String CYAN = "\u001B[96m";
-	        final String BOLD = "\u001B[1m";
-	        final String CLEAR = "\u001B[0m";
-	        final String DB = "\u001B[34m";
-	        final String RED = "\u001B[31m";
-	        final String GOLD = "\u001B[33m";
+		System.out.println("                                                                                                    Invalid");
+
+		 
+
+		}
+
+		else {
+
+		 
+
+		 
+
+		System.out.println("                                                                                                    Invalid");
+
+		 
+
+		 
+
+		}
+
+		}catch(InputMismatchException e){
+
+		System.out.println("                                                                                                    Invalid");
+
+		System.out.println("                                                                                                    Enter number of bookings to cancel");
+
+		s.nextLine();
+
+		}
+
+		}
+
+		//cm2
+
+		while(true) {
+
+		try {
+
+		for(int i=0; i<numtodel;) {
+
+		Standardstatus();
+
 		
-		int numtodel=0;
-		int bs = premiumBookings.size(); 
-		while(true) {
-			try {
-				System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
-				System.out.println();
-				System.out.print("                                                                                                     " );
-				System.out.println("   Enter" + RED +" 0 " + NON+ "to back.");
-				System.out.print("                                                                                  " );
-				System.out.println("Enter the" +BOLD+ CYAN + " Number " + NON + "of Booking and Sear Reservation to" + RED+" remove."+NON);
-				System.out.print("                                                                                            " );
-				System.out.println();
-				System.out.print("                                                                                                           " );//here
-				System.out.print(CYAN+BOLD+"Choice: "+NON);
-				 numtodel= s.nextInt();
-				 
-				 System.out.println();
-				 if(numtodel>bs&&numtodel!=0) {
-					 System.out.print("                                                                                                        " );
-					 System.out.println("Cannot cancel above number of total bookings");
-				 }else if(numtodel<=bs) {
-					 break;
-				 }else if (numtodel == 0) {
-					 recursePremium();
-				 }
-			}catch(InputMismatchException e) {
-				System.out.print("                                                                                                        " );
-				System.out.println("Numbers only");
-				System.out.print("                                                                                                        " );
-				s.nextLine();
-			}
-		}
-		while(true) {
-			try {
-				
-					Path ip = Paths.get("C:\\Users\\USER\\Desktop\\JavaFiles\\BookedPeople.txt");
-					
-					for(int i=0;i<numtodel;i++) {
-						
-						
-						Premiumstatus();
-						System.out.print("                                                                                                        " );
-							 System.out.println("Enter your seat name or code to cancel reservation");
-							 System.out.print("                                                                                                        " );
-								System.out.println();
-								System.out.print("                                                                                                        " );//here
-								System.out.print(CYAN+BOLD+"Choice: "+NON);
-							String input = s.nextLine();
-							 if (Premiumseats.containsKey(input)&&isPremiumSeatValid(input)&&	!Premiumseats.get(input).equals("available")) {
-								 Premiumseats.put(input,"available");
-								 Premiumstatus.put(input, GREEN+"██"+NON  );
-								 System.out.print("                                                                                                        " );
-								System.out.println(input+ "is now "+ Premiumseats.get(input));
-								Premiumstatus();
-							}else if (input == "0") {
-								continue;
-							}
-							 else {
-								 i--;
-								 System.out.print("                                                                                                        " );
-								 System.out.println("Follow the instructions!");
-							}
-						
-					}
-					System.out.print("                                                                                                        " );
-				System.out.println("Enter your ticket ID to cancel all the bookings in your name");
-				System.out.print("                                                                                                        " );
-				System.out.println();
-				System.out.print("                                                                                                        " );//here
-				System.out.print(CYAN+BOLD+"Choice: "+NON);
-				 String target = s.nextLine();
-				 List<String> fs = new ArrayList<>();
-				 for (int  i=premiumBookings.size()-1 ;i>=0 && numtodel>0;i--) {
-					 String str = premiumBookings.get(i);
-					 if(str.contains(target)) {
-						 premiumBookings.remove(i);
-						 PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
-						 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt"));
-						 writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
-							writerB.print(premiumBookings);
-							writerB.flush();
-						 numtodel--;
-						
-					 }
-				 }
-				 System.out.print("                                                                                                        " );
-				 System.out.println("Enter number of cancelled bookings to refund");
-				 System.out.print("                                                                                                        " );
-					System.out.println();
-					System.out.print("                                                                                                        " );//here
-					System.out.print(CYAN+BOLD+"Choice: "+NON);
-				 int multiplier = s.nextInt();
-				 int value = premiumPricing;
-				 int targetvalue = value*multiplier;
-				 int refund; 
-				 int remains;
-				 for (int index = 0; index< premiumPayments.size(); index++){
-					 int payment = premiumPayments.get(index);
-				 if(payment>=targetvalue){
-				 remains = payment-targetvalue;
-				 refund=targetvalue;
-				 
-				 premiumPayments.remove(index);
-				 premiumPayments.add(remains);
-				 System.out.print("                                                                                                        " );
-				 System.out.println("Refunded amount: "+refund);
-				 break;
-				 }	
-				 }
-				 PrintWriter pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumPayments.txt", true));
-				 pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumPayments.txt"));
-				 pw = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumPayments.txt", true));
-				 pw.print(premiumPayments);
-					pw.flush();
-			
-				
-				 /*System.out.println("now Type your ticket ID to cancel the bookings in your name");
-				 String target = s.nextLine();
-				 List<String> fs = new ArrayList<>();
-		//this might cause error some time soon
-				 for (int  it=bookings.size()-1 ;it>=0 && numtodel>0;it--) {
-					 String str = bookings.get(it);
-					 if(str.contains(target)) {
-						 bookings.remove(it);
-						 numtodel--;*/
-					System.out.print("                                                                                                        " );
-					
-				 System.out.println("Updated bookings");
-				 int regu = premiumBookings.size();
-				 curatePremiumTicket(target, multiplier,regu);
-				Recurse();
-		           			 
-			
-			}catch(IOException e) {
-				System.out.println("an error has occured");
-			}
-			}
+		System.out.print("                                                                                                    " );
+
+
+		System.out.println("Type the seat codes you have reserevd to cancel reservation ex: A1");
+
+		System.out.println();
+
+		System.out.print("                                                                                                    " );//here
+
+		System.out.print(CYAN+BOLD+"Choice: "+NON);
+
+		seatinput = s.nextLine();
+
+		if(isStandardSeatValid(seatinput)&&Standardseats.containsKey(seatinput)&&!Standardseats.get(seatinput).equals("available")) {
+
+		Standardseats.put(seatinput,"available");
+
+		Standardstatus.put(seatinput, GREEN+"██"+NON );
+
+		System.out.println("                                                                                                    "+seatinput+ "is now "+ Standardseats.get(seatinput));
+
+		Standardstatus();
+
+		i++;
+
+		 
+
+		}else {
+
+		System.out.print("                                                                                                    " );
+
+		System.out.println("Invalid. Try again");
 
 		}
+
+		 
+
+		}
+
+		 
+
+		break;
+
+		 
+
+		}catch(InputMismatchException e){
+
+		 
+
+		System.out.println("fuck you stop trynna do the impossible");
+
+		System.out.println("Type fucking number of bookings you want to cancel");
+
+		s.nextLine();
+
+		}
+
+		}
+
+		//cm3
+
+		while(true) {
+
+		try {
+
+		boolean found= false;
+
+		System.out.print("                                                                                                    " );
+
+		System.out.println("Enter your ticket ID to cancel the bookings in your name ex: 1234");
+
+		System.out.println();
+
+		System.out.print("                                                                                                    " );//here
+
+		System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
+
+		target = s.nextLine();
+
+		for(String s: bookings) {
+
+		if (s.contains(target)) {
+
+		found=true;
+
+		break;
+
+		}
+
+		}
+
+		if(found&& isValidTicketID(target)) {
+
+		int removed =0;
+
+		for (int i = bookings.size() - 1; i >= 0 && removed < numtodel; i--) {
+
+		String str = bookings.get(i);
+
+		if (str.contains(target)) {
+
+		bookings.remove(i);
+
+		removed++;
+
+		PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+
+		writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt"));
+
+		writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\StandardBookings.txt", true));
+
+		writerB.print(bookings);
+
+		writerB.flush();
+
+		 
+
+		}
+
+		}
+
+		break;
+
+		}else {
+
+		System.out.println("                                                                                                    Invalid");
+
+		System.out.println("                                                                                                    Try again");
+
+		}
+
+		 
+
+		 
+
+		 
+
+		}catch(InputMismatchException e) {
+
+		System.out.println("fuck you stop trynna do the impossible");
+
+		System.out.println("Type fucking number of bookings you want to cancel");
+
+		s.nextLine();
+
+		}catch(IOException e) {
+
+		 
+
+		}
+
+		}
+
+		//cm4
+
+		while(true) {
+
+		int value = standardPricing;
+
+		int cost = value*numtodel;
+
+		int payment;
+
+		int refund;
+
+		int remains;
+
+		int panukli;
+
+		int overpayment;
+
+		 
+
+		try {
+
+		 
+
+		System.out.println("                                                                                                    refunded amount: "+cost);
+
+		System.out.println("                                                                                                    updated bookings");
+
+		int regu = bookings.size();
+
+		multiplier = bookings.size();
+
+		curateStandardTicket(target,multiplier,regu);
+
+		 
+
+		break;
+
+		}catch(InputMismatchException e) {
+
+		System.out.println("fuck you stop trynna do the impossible");
+
+		}
+
+		}
+
+
+
+
+		 
+
+		Recurse();
+
+		}
+
+
+
+
+		public void PremiummultiCancel() {
+
+			final String CYAN = "\u001B[96m";
+
+			final String BOLD = "\u001B[1m";
+
+			final String CLEAR = "\u001B[0m";
+
+			final String DB = "\u001B[34m";
+
+			final String RED = "\u001B[31m";
+
+			final String GOLD = "\u001B[33m";
+
+			final String RESET = "\u001B[0m";
+
+			int numtodel;
+
+			int bs = premiumBookings.size();
+
+			String seatinput;
+
+			String target;
+
+			int multiplier;
+
+			System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
+
+			System.out.println(BOLD + "        		 				   ┌─────────────────────────────────────────────────────────────────────────────────────────────────┐");
+			System.out.println(BOLD + "        		 				   │" + GOLD + "                                PREMIUM BOOKING CANCELLING SECTION!" + RESET + BOLD +"                              │");
+			System.out.println(BOLD + "        		 				   └─────────────────────────────────────────────────────────────────────────────────────────────────┘");
+
+
+			//cm1
+
+			while (true) {
+
+			try {
+
+			System.out.print("                                                                                                        " );//here
+
+			System.out.println("Enter number of bookings to cancel");
+
+			System.out.println();
+
+			System.out.print("                                                                                                        " );//here
+
+			System.out.print(CYAN+BOLD+"Choice: "+NON);
+
+			numtodel = s.nextInt();
+
+			s.nextLine();
+
+			if(numtodel<=bs&&numtodel !=0) {
+
+			System.out.println("                                                                                                    Proceeding now...");
+
+			break;
+
+			}
+
+			else if (numtodel==0) {
+
+			 
+
+			System.out.println("                                                                                                    Invalid");
+
+			 
+
+			}
+
+			else {
+
+			 
+
+			 
+
+			System.out.println("                                                                                                    Invalid");
+
+			 
+
+			 
+
+			}
+
+			}catch(InputMismatchException e){
+
+			System.out.println("                                                                                                    Invalid");
+
+			System.out.println("                                                                                                    Enter number of bookings to cancel");
+
+			s.nextLine();
+
+			}
+
+			}
+
+			//cm2
+
+			while(true) {
+
+			try {
+
+			for(int i=0; i<numtodel;) {
+
+			Premiumstatus();
+
+			
+			System.out.print("                                                                                                    " );
+
+
+			System.out.println("Type the seat codes you have reserevd to cancel reservation ex: A1");
+
+			System.out.println();
+
+			System.out.print("                                                                                                    " );//here
+
+			System.out.print(CYAN+BOLD+"Choice: "+NON);
+
+			seatinput = s.nextLine();
+
+			if(isPremiumSeatValid(seatinput)&&Premiumseats.containsKey(seatinput)&&!Premiumseats.get(seatinput).equals("available")) {
+
+				Premiumseats.put(seatinput,"available");
+
+			Premiumstatus.put(seatinput, GREEN+"██"+NON );
+
+			System.out.println("                                                                                                    "+seatinput+ "is now "+ Premiumseats.get(seatinput));
+
+			Premiumstatus();
+
+			i++;
+
+			 
+
+			}else {
+
+			System.out.print("                                                                                                    " );
+
+			System.out.println("Invalid. Try again");
+
+			}
+
+			 
+
+			}
+
+			 
+
+			break;
+
+			 
+
+			}catch(InputMismatchException e){
+
+			 
+
+			System.out.println("fuck you stop trynna do the impossible");
+
+			System.out.println("Type fucking number of bookings you want to cancel");
+
+			s.nextLine();
+
+			}
+
+			}
+
+			//cm3
+
+			while(true) {
+
+			try {
+
+			boolean found= false;
+
+			System.out.print("                                                                                                    " );
+
+			System.out.println("Enter your ticket ID to cancel the bookings in your name ex: 1234");
+
+			System.out.println();
+
+			System.out.print("                                                                                                    " );//here
+
+			System.out.print(CYAN+BOLD+"Ticket ID: "+NON);
+
+			target = s.nextLine();
+
+			for(String s: premiumBookings) {
+
+			if (s.contains(target)) {
+
+			found=true;
+
+			break;
+
+			}
+
+			}
+
+			if(found&& isValidTicketID(target)) {
+
+			int removed =0;
+
+			for (int i = premiumBookings.size() - 1; i >= 0 && removed < numtodel; i--) {
+
+			String str = premiumBookings.get(i);
+
+			if (str.contains(target)) {
+
+				premiumBookings.remove(i);
+
+			removed++;
+
+			PrintWriter writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
+
+			writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt"));
+
+			writerB = new PrintWriter(new FileWriter("C:\\Users\\USER\\Desktop\\JavaFiles\\PremiumBookings.txt", true));
+
+			writerB.print(premiumBookings);
+
+			writerB.flush();
+
+			 
+
+			}
+
+			}
+
+			break;
+
+			}else {
+
+			System.out.println("                                                                                                    Invalid");
+
+			System.out.println("                                                                                                    Try again");
+
+			}
+
+			 
+
+			 
+
+			 
+
+			}catch(InputMismatchException e) {
+
+			System.out.println("fuck you stop trynna do the impossible");
+
+			System.out.println("Type fucking number of bookings you want to cancel");
+
+			s.nextLine();
+
+			}catch(IOException e) {
+
+			 
+
+			}
+
+			}
+
+			//cm4
+
+			while(true) {
+
+			int value = premiumPricing;
+
+			int cost = value*numtodel;
+
+			int payment;
+
+			int refund;
+
+			int remains;
+
+			int panukli;
+
+			int overpayment;
+
+			 
+
+			try {
+
+			 
+
+			System.out.println("                                                                                                    refunded amount: "+cost);
+
+			System.out.println("                                                                                                    updated bookings");
+
+			int regu = premiumBookings.size();
+
+			multiplier = premiumBookings.size();
+
+			curateStandardTicket(target,multiplier,regu);
+
+			 
+
+			break;
+
+			}catch(InputMismatchException e) {
+
+			System.out.println("fuck you stop trynna do the impossible");
+
+			}
+
+			}
+
+
+
+
+			 
+
+			Recurse();
+
+			}
+
+
+
+		 
+
+
+		 
+
+
 
 	
 	@Override
@@ -1735,23 +2076,23 @@ System.out.println("");
 				        final String DB = "\u001B[34m";
 				        final String RED = "\u001B[31m";
 				        Object std = new Object();
-						System.out.println();
+				        System.out.println();
 						System.out.println();
 						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
-				        System.out.println(BOLD);
-				        System.out.println(BOLD);
-				        System.out.println("        		 				   ╔═════════════════════════════════════════════════════════════════════════════════════════════════╗");
-				        System.out.println(BOLD +         "        		                                   ║                                          STANDARD SECTION                                       ║" + NON);
-				        System.out.println("        		 				   ╠═════════════════════════════════════════════════════════════════════════════════════════════════╣");
-				        System.out.println(BOLD +         "        		                                   ║                                           ENTER A NUMBER                                        ║" + NON);
-				        System.out.println("        		 				   ║                                                                                                 ║");
-				        System.out.println(BOLD +   "                                                           ║"+ RED +"                                              0 Back" + NON+"                                             ║" + NON);
-				        System.out.println(BOLD +         "                                                           ║			           1 Ticket Booking     3 Cancellation                               ║");
-				        System.out.println("        		 				   ║			           2 Show Ticket        4 Receipt                                    ║");
-				        System.out.println("        		 				   ╚═════════════════════════════════════════════════════════════════════════════════════════════════╝");
-				        System.out.print("                                                                                                        " + NON);
-				        System.out.println();
-						System.out.print("                                                                                                        " );//here
+						System.out.println(BOLD);
+						System.out.println(BOLD);
+						System.out.println("        		                                                            ╔════════════════════════════════════════════════════╗");
+						System.out.println(BOLD + "        		                                                            ║                  PREMIUM SECTION                   ║" + NON);
+						System.out.println("        		 				                            ╠════════════════════════════════════════════════════╣");
+						System.out.println(BOLD + "        		                                                            ║                   ENTER A NUMBER                   ║" + NON);
+						System.out.println("        		 				                            ║                                                    ║");
+						System.out.println(BOLD + "                                                                                    ║" + RED + "                         0 Back    " + NON + "                 ║");
+						System.out.println(BOLD + "                                                                                    ║        1 Ticket Booking        3 Cancellation      ║");
+						System.out.println("        		 				                            ║        2 Show Ticket           4 Receipt           ║");
+						System.out.println("        		 				                            ╚════════════════════════════════════════════════════╝");
+						System.out.println();
+					
+						System.out.print("                                                                                                        " );
 						System.out.print(CYAN+BOLD+"Choice: "+NON);
 
 //for inputs
