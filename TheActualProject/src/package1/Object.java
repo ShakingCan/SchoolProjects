@@ -1159,9 +1159,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 		 
 
-		System.out.println("fuck you stop trynna do the impossible");
+		System.out.println("Numbers only");
 
-		System.out.println("Type fucking number of bookings you want to cancel");
+		System.out.println("Enter number of bookings to cancel");
 
 		s.nextLine();
 
@@ -1249,10 +1249,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 		}catch(InputMismatchException e) {
 
-		System.out.println("fuck you stop trynna do the impossible");
+			System.out.println("Numbers only");
 
-		System.out.println("Type fucking number of bookings you want to cancel");
-
+		
 		s.nextLine();
 
 		}catch(IOException e) {
@@ -1303,7 +1302,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 		}catch(InputMismatchException e) {
 
-		System.out.println("fuck you stop trynna do the impossible");
+			System.out.println("Numbers only");
 
 		}
 
@@ -1478,9 +1477,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 			 
 
-			System.out.println("fuck you stop trynna do the impossible");
+				System.out.println("Numbers only");
 
-			System.out.println("Type fucking number of bookings you want to cancel");
+			System.out.println("Enter number of bookings to cancel");
 
 			s.nextLine();
 
@@ -1568,9 +1567,9 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 			}catch(InputMismatchException e) {
 
-			System.out.println("fuck you stop trynna do the impossible");
+				System.out.println("Numbers only");
 
-			System.out.println("Type fucking number of bookings you want to cancel");
+			
 
 			s.nextLine();
 
@@ -1622,7 +1621,7 @@ public class Object implements Bookable, MovieListViewable,Showable, Cancellable
 
 			}catch(InputMismatchException e) {
 
-			System.out.println("fuck you stop trynna do the impossible");
+				System.out.println("Numbers only");
 
 			}
 
@@ -2077,20 +2076,20 @@ System.out.println("");
 				        final String RED = "\u001B[31m";
 				        Object std = new Object();
 				        System.out.println();
-						System.out.println();
-						System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
-						System.out.println(BOLD);
-						System.out.println(BOLD);
-						System.out.println("        		                                                            ╔════════════════════════════════════════════════════╗");
-						System.out.println(BOLD + "        		                                                            ║                  PREMIUM SECTION                   ║" + NON);
-						System.out.println("        		 				                            ╠════════════════════════════════════════════════════╣");
-						System.out.println(BOLD + "        		                                                            ║                   ENTER A NUMBER                   ║" + NON);
-						System.out.println("        		 				                            ║                                                    ║");
-						System.out.println(BOLD + "                                                                                    ║" + RED + "                         0 Back    " + NON + "                 ║");
-						System.out.println(BOLD + "                                                                                    ║        1 Ticket Booking        3 Cancellation      ║");
-						System.out.println("        		 				                            ║        2 Show Ticket           4 Receipt           ║");
-						System.out.println("        		 				                            ╚════════════════════════════════════════════════════╝");
-						System.out.println();
+				        System.out.println();
+				        System.out.println(CYAN + BOLD + "                                                                                          ============🎬🍿 FilmHouse 🎥🎞️============" + NON);
+				        System.out.println(BOLD);
+				        System.out.println(BOLD + "                                                                                    ╔════════════════════════════════════════════════════╗");
+				        System.out.println("                                                                                    ║                 STANDARD SECTION                   ║");
+				        System.out.println("                                                                                    ╠════════════════════════════════════════════════════╣");
+				        System.out.println("                                                                                    ║                   ENTER A NUMBER                   ║");
+				        System.out.println("                                                                                    ║                                                    ║");
+				        System.out.println("                                                                                    ║                " + RED + "0" + NON + " Back                              ║");
+				        System.out.println("                                                                                    ║                1 Ticket Booking                    ║");
+				        System.out.println("                                                                                    ║                2 Show Ticket                       ║");
+				        System.out.println("                                                                                    ║                3 Cancellation                      ║");
+				        System.out.println("                                                                                    ╚════════════════════════════════════════════════════╝");
+
 					
 						System.out.print("                                                                                                        " );
 						System.out.print(CYAN+BOLD+"Choice: "+NON);
@@ -2254,21 +2253,21 @@ System.out.println("");
 		        final String RED = "\u001B[31m";
 		        final String YL = "\u001B[33m";
 				Object prm = new Object();
-				System.out.println();
-				System.out.println();
-				System.out.println(CYAN+BOLD+"        		 								  ============🎬🍿 FilmHouse 🎥🎞️============       		 			        		 		"+NON);
-				System.out.println(BOLD);
-				System.out.println(BOLD);
-				System.out.println("        		                                                            ╔════════════════════════════════════════════════════╗");
-				System.out.println(BOLD + "        		                                                            ║                  PREMIUM SECTION                   ║" + NON);
-				System.out.println("        		 				                            ╠════════════════════════════════════════════════════╣");
-				System.out.println(BOLD + "        		                                                            ║                   ENTER A NUMBER                   ║" + NON);
-				System.out.println("        		 				                            ║                                                    ║");
-				System.out.println(BOLD + "                                                                                    ║" + RED + "                         0 Back    " + NON + "                 ║");
-				System.out.println(BOLD + "                                                                                    ║        1 Ticket Booking        3 Cancellation      ║");
-				System.out.println("        		 				                            ║        2 Show Ticket           4 Receipt           ║");
-				System.out.println("        		 				                            ╚════════════════════════════════════════════════════╝");
-				System.out.println();
+				 System.out.println();
+			        System.out.println();
+			        System.out.println(CYAN + BOLD + "                                                                                          ============🎬🍿 FilmHouse 🎥🎞️============" + NON);
+			        System.out.println(BOLD);
+			        System.out.println(BOLD + "                                                                                    ╔════════════════════════════════════════════════════╗");
+			        System.out.println("                                                                                    ║                  PREMIUM SECTION                   ║");
+			        System.out.println("                                                                                    ╠════════════════════════════════════════════════════╣");
+			        System.out.println("                                                                                    ║                   ENTER A NUMBER                   ║");
+			        System.out.println("                                                                                    ║                                                    ║");
+			        System.out.println("                                                                                    ║                " + RED + "0" + NON + " Back                              ║");
+			        System.out.println("                                                                                    ║                1 Ticket Booking                    ║");
+			        System.out.println("                                                                                    ║                2 Show Ticket                       ║");
+			        System.out.println("                                                                                    ║                3 Cancellation                      ║");
+			        System.out.println("                                                                                    ╚════════════════════════════════════════════════════╝");
+
 			
 				System.out.print("                                                                                                        " );
 				System.out.print(CYAN+BOLD+"Choice: "+NON);
@@ -2352,6 +2351,7 @@ System.out.println("");
 					 }
 
 					 if (matchCount == 0) {
+						 System.out.print("                                                                                                        " );
 					     System.out.println("Invalid ticket ID.");
 					     recurseStandard();
 					 }
@@ -2410,6 +2410,7 @@ System.out.println("");
 						 }
 
 						 if (matchCount == 0) {
+							 System.out.print("                                                                                                        " );
 						     System.out.println("Invalid ticket ID.");
 						     recursePremium();
 						 }
@@ -2430,7 +2431,7 @@ System.out.println("");
 						 
 						
 
-			
+			recursePremium();
 		}
 	}
 
